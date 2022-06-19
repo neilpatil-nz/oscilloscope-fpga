@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top_level">
+    <SubModule name="pll_clock"/>
+    <SubModule name="display" Register="21" Alu="38" Lut="64">
+        <SubModule name="dual_port_ram" Register="1" Lut="1" Bsram="2"/>
+    </SubModule>
+</Module>

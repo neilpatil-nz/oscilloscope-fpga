@@ -1,0 +1,44 @@
+GowinSynthesis start
+Running parser ...
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd'
+Analyzing entity 'dual_bram'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":12)
+Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":28)
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd'
+Analyzing entity 'gowin_osc'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":12)
+Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":18)
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd'
+Analyzing entity 'gowin_rpll'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
+Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":20)
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd'
+Analyzing entity 'vga_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":20)
+WARN  (EX4967) : Cannot read from 'out' object 'lcd_enable', use 'buffer' or 'inout' instead("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":99)
+WARN  (EX4967) : Cannot read from 'out' object 'lcd_enable', use 'buffer' or 'inout' instead("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":100)
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd'
+Analyzing entity 'top_level'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":5)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":22)
+Processing 'top_level(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":5)
+Processing 'Gowin_rPLL(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
+Processing 'vga_controller(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
+WARN  (EX4206) : Using initial value for 'ram_wr_address' since it is never assigned("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":54)
+Processing 'dual_bram(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":12)
+NOTE  (EX0101) : Current top module is "top_level"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+[95%] Generate netlist file "G:\Git\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project.vg" completed
+[100%] Generate report file "G:\Git\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project_syn.rpt.html" completed
+GowinSynthesis finish

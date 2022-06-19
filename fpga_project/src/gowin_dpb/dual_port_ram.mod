@@ -1,0 +1,23 @@
+-series GW1N
+-device GW1N-1
+-package QFN48
+-part_number GW1N-LV1QN48C6/I5
+
+
+-mod_name dual_port_ram
+-file_name dual_port_ram
+-path A:/Documents/fpga_project/src/gowin_dpb/
+-type RAM_DP
+-file_type vhdl
+-bram_b true
+-dev_type GW1N-1
+-depth_0 10
+-depth_1 10
+-width_0 10
+-width_1 10
+-read_mode_0 bypass
+-read_mode_1 bypass
+-write_mode_0 normal
+-write_mode_1 normal
+-speed false
+-reset_mode sync

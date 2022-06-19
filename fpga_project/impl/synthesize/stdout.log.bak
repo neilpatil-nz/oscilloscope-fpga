@@ -1,0 +1,25 @@
+
+Starting:    C:\Gowin\Gowin_V1.9.7.05Beta\SynplifyPro\bin64\mbin\synbatch.exe
+Install:     C:\Gowin\Gowin_V1.9.7.05Beta\SynplifyPro
+Hostname:    DESKTOP-P91DG5P
+Date:        Sat Jun 18 18:02:04 2022
+Version:     Q-2020.03G-Beta1
+
+Arguments:   -product synplify_pro -batch -licensetype synplifypro_gowin A:/Documents/fpga_project/impl/synthesize/fpga_project.prj
+ProductType: synplify_pro
+
+Cannot find license file.
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+Feature:       synplifypro_gowin
+License path:  C:\Gowin\Gowin_V1.9.7.05Beta\SynplifyPro\license.txt;
+FlexNet Licensing error:-1,234
+
+
+Host ID:  "fc3497e1a806 0a0027000010 f4463731d9c3 f6463731d9c2 f4463731d9c2 f4463731d9c6"
+Please contact support at https://solvnetplus.synopsys.com/ManageCase?ccf=1
+
+
+Running in Vendor Mode
+

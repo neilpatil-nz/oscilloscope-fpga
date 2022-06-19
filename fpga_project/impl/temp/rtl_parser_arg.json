@@ -1,0 +1,37 @@
+{
+ "Files" : [
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_bram/dual_bram.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
+   "Type" : "vhdl"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "G:/Git/oscilloscope-fpga/fpga_project/impl/temp/rtl_parser.result",
+ "Top" : "top_level",
+ "VerilogStd" : "verilog_2001",
+ "VhdlStd" : "vhdl_93"
+}
