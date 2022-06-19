@@ -1,7 +1,7 @@
 //
 //Written by GowinSynthesis
 //Product Version "GowinSynthesis V1.9.7.05Beta"
-//Sun Jun 19 19:06:04 2022
+//Mon Jun 20 09:31:38 2022
 
 //Source file index table:
 //file0 "\G:/Git/oscilloscope-fpga/fpga_project/src/dual_bram/dual_bram.vhd"
@@ -9,6 +9,7 @@
 //file2 "\G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd"
 //file3 "\G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd"
 //file4 "\G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd"
+//file5 "\G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd"
 `timescale 100 ps/100 ps
 module Gowin_rPLL (
   CLOCK_IN_d,
@@ -1395,18 +1396,21 @@ defparam y_Pixel_14_s.ALU_MODE=0;
 endmodule /* vga_controller */
 module top_level (
   CLOCK_IN,
-  LED_R,
   LCD_CLOCK,
   LCD_HSYNC,
   LCD_VSYNC,
   LCD_DEN,
   LCD_R,
   LCD_G,
-  LCD_B
+  LCD_B,
+  ADC_DATA,
+  ADC_WR_RDY,
+  ADC_RD,
+  ADC_CS,
+  ADC_INT
 )
 ;
 input CLOCK_IN;
-output LED_R;
 output LCD_CLOCK;
 output LCD_HSYNC;
 output LCD_VSYNC;
@@ -1414,6 +1418,11 @@ output LCD_DEN;
 output [4:0] LCD_R;
 output [5:0] LCD_G;
 output [4:0] LCD_B;
+input [7:0] ADC_DATA;
+input ADC_WR_RDY;
+output ADC_RD;
+output ADC_CS;
+input ADC_INT;
 wire CLOCK_IN_d;
 wire sys_clock;
 wire LCD_CLOCK_d;
@@ -1426,10 +1435,6 @@ wire GND;
   IBUF CLOCK_IN_ibuf (
     .O(CLOCK_IN_d),
     .I(CLOCK_IN) 
-);
-  OBUF LED_R_obuf (
-    .O(LED_R),
-    .I(LCD_CLOCK_d) 
 );
   OBUF LCD_CLOCK_obuf (
     .O(LCD_CLOCK),
@@ -1510,6 +1515,16 @@ wire GND;
   OBUF LCD_B_4_obuf (
     .O(LCD_B[4]),
     .I(ram_q[0]) 
+);
+  TBUF ADC_RD_s0 (
+    .O(ADC_RD),
+    .I(GND),
+    .OEN(VCC) 
+);
+  TBUF ADC_CS_s0 (
+    .O(ADC_CS),
+    .I(GND),
+    .OEN(VCC) 
 );
   Gowin_rPLL pll_clock (
     .CLOCK_IN_d(CLOCK_IN_d),

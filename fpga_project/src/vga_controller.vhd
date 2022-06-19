@@ -82,24 +82,20 @@ begin
                   y_Count >= y_BackPorch and
                   y_Count <= (VS_Line - y_FrontPorch-1)) else '0';
 
-    
-    -- output_lcd <= "111111" when (x_Count >=  x_BackPorch+sig_Count and x_Count <=  4+x_BackPorch+sig_Count and y_Count >= 200+sig_H_count and y_Count <= 204+sig_H_count) else
-    --               "111111" when (x_Count >=  x_BackPorch+sig_Count+4 and x_Count <=  8+x_BackPorch+sig_Count and y_Count >= 204+sig_H_count and y_Count <= 208+sig_H_count) else
-    --               "111111" when (x_Count >=  x_BackPorch+sig_Count+8 and x_Count <=  12+x_BackPorch+sig_Count and y_Count >= 208+sig_H_count and y_Count <= 212+sig_H_count)  else "000000";
+    output_lcd <= "111111" when (ram_q(0) = '1') else "000000";
 
     lcd_b <= output_lcd(4 downto 0);
     lcd_r <= output_lcd(4 downto 0);
     lcd_g <= output_lcd;
 
-    output_lcd <= "111111" when (ram_q(0) = '1') else "000000";
-
+    -- memory address
     x_Pixel <=  shift_right(to_unsigned(x_Count-x_BackPorch, x_Pixel'length), 2);
     y_Pixel <=  to_unsigned((to_integer(unsigned(shift_right(to_unsigned(y_Count, y_Pixel'length), 2))) * x_Width_Partial),  y_Pixel'length);
-
+    
     ram_rd_address <= std_logic_vector(x_Pixel + y_Pixel) when lcd_enable ='1' else (others =>'0');
     ram_rd_clk_en <= '1' when lcd_enable ='1' else '0';
-                                                        
-
+                                                            
+    -- framebuffer for display
     dual_port_ram: entity work.dual_bram
     port map (
         dout => ram_q,
@@ -114,6 +110,5 @@ begin
         adb => ram_rd_address,
         oce => '0'
     );
-
     
 end architecture;
