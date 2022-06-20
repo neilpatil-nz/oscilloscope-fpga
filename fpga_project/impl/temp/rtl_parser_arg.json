@@ -2,6 +2,11 @@
  "Files" : [
   {
    "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_bram/dual_bram.vhd",
    "Type" : "vhdl"
   },
@@ -23,11 +28,6 @@
   {
    "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
-   "Type" : "vhdl"
-  },
-  {
-   "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
    "Type" : "vhdl"
   }
  ],

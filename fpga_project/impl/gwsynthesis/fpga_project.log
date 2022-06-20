@@ -1,5 +1,8 @@
 GowinSynthesis start
 Running parser ...
+Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd'
+Analyzing entity 'adc_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":28)
 Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd'
 Analyzing entity 'dual_bram'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":12)
 Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":28)
@@ -11,26 +14,17 @@ Analyzing entity 'gowin_rpll'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_r
 Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":20)
 Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd'
 Analyzing entity 'vga_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":20)
-WARN  (EX4967) : Cannot read from 'out' object 'lcd_enable', use 'buffer' or 'inout' instead("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":95)
-WARN  (EX4967) : Cannot read from 'out' object 'lcd_enable', use 'buffer' or 'inout' instead("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":96)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":25)
 Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd'
 Analyzing entity 'top_level'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":5)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":27)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd'
-Analyzing entity 'adc_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":28)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":29)
 Processing 'top_level(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":5)
 Processing 'Gowin_rPLL(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
 Processing 'vga_controller(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
-WARN  (EX4206) : Using initial value for 'ram_wr_address' since it is never assigned("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":54)
 Processing 'dual_bram(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_bram\dual_bram.vhd":12)
+Processing 'adc_controller(pixels_height=120,pixels_width=200)(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
 NOTE  (EX0101) : Current top module is "top_level"
-WARN  (EX0211) : The output port "ADC_RD" of module "top_level" has no driver("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":19)
-WARN  (EX0211) : The output port "ADC_CS" of module "top_level" has no driver("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":20)
 [5%] Running netlist conversion ...
-WARN  (CV0003) : Output "ADC_RD" has undriven bits, assigning undriven bits to Z, simulation mismatch possible("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":19)
-WARN  (CV0003) : Output "ADC_CS" has undriven bits, assigning undriven bits to Z, simulation mismatch possible("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":20)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
