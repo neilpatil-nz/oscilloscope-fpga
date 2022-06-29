@@ -55,7 +55,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <table class="summary_table">
 <tr>
 <td class="label">Report Title</td>
-<td>Gowin Power Analysis Report</td>
+<td>Power Analysis Report</td>
 </tr>
 <tr>
 <td class="label">Design File</td>
@@ -70,8 +70,8 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <td>---</td>
 </tr>
 <tr>
-<td class="label">GOWIN Version</td>
-<td>V1.9.7.05Beta</td>
+<td class="label">Version</td>
+<td>V1.9.8.05</td>
 </tr>
 <tr>
 <td class="label">Part Number</td>
@@ -83,12 +83,12 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Mon Jun 20 13:11:00 2022
+<td>Thu Jun 30 11:38:56 2022
 </td>
 </tr>
 <tr>
 <td class="label">Legal Announcement</td>
-<td>Copyright (C)2014-2021 Gowin Semiconductor Corporation. All rights reserved.</td>
+<td>Copyright (C)2014-2022 Gowin Semiconductor Corporation. All rights reserved.</td>
 </tr>
 </table>
 <h1><a name="Summary">Power Summary</a></h1>
@@ -96,30 +96,30 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <table class="summary_table">
 <tr>
 <td class="label">Total Power (mW)</td>
-<td>19.070</td>
+<td>15.831</td>
 </tr>
 <tr>
 <td class="label">Quiescent Power (mW)</td>
-<td>4.153</td>
+<td>4.584</td>
 </tr>
 <tr>
 <td class="label">Dynamic Power (mW)</td>
-<td>14.917</td>
+<td>11.248</td>
 </tr>
 </table>
 <h2><a name="Thermal_Info">Thermal Information:</a></h2>
 <table class="summary_table">
 <tr>
 <td class="label">Junction Temperature</td>
-<td>25.277</td>
+<td>25.643</td>
 </tr>
 <tr>
 <td class="label">Theta JA</td>
-<td>14.800</td>
+<td>40.580</td>
 </tr>
 <tr>
 <td class="label">Max Allowed Ambient Temperature</td>
-<td>84.723</td>
+<td>84.357</td>
 </tr>
 </table>
 <h2><a name="Configure_Info">Configure Information:</a></h2>
@@ -188,23 +188,23 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>VCC</td>
 <td>1.200</td>
-<td>10.707</td>
-<td>2.160</td>
-<td>15.441</td>
+<td>7.963</td>
+<td>1.883</td>
+<td>11.816</td>
 </tr>
 <tr>
 <td>VCCO25</td>
 <td>2.500</td>
-<td>0.198</td>
-<td>0.055</td>
-<td>0.632</td>
+<td>0.136</td>
+<td>0.034</td>
+<td>0.426</td>
 </tr>
 <tr>
 <td>VCCO33</td>
 <td>3.300</td>
-<td>0.186</td>
-<td>0.222</td>
-<td>1.346</td>
+<td>0.174</td>
+<td>0.219</td>
+<td>1.299</td>
 </tr>
 </table>
 <h1><a name="Detail">Power Details</a></h1>
@@ -218,15 +218,15 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td>Logic</td>
-<td>1.242</td>
+<td>0.213</td>
 <td>NA</td>
-<td>7.521</td>
+<td>9.269</td>
 </tr>
 <tr>
 <td>IO</td>
-<td>4.422
-<td>1.893
-<td>9.555
+<td>3.810
+<td>1.746
+<td>8.862
 </tr>
 <tr>
 <td>BSRAM</td>
@@ -247,33 +247,27 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <th class="label">Hierarchy Entity</th>
 <th class="label">Total Power(mW)</th>
 <th class="label">Block Dynamic Power(mW)</th>
-<th class="label">Routing Dynamic Power(mW)</th>
 </tr>
 <tr>
 <td>top_level</td>
-<td>12.380</td>
-<td>10.208(10.208)</td>
-<td>2.172(2.172)</td>
+<td>9.179</td>
+<td>9.179(9.179)</td>
 <tr>
 <td>top_level/adc/</td>
-<td>2.156</td>
-<td>0.904(0.000)</td>
-<td>1.252(0.000)</td>
+<td>0.179</td>
+<td>0.179(0.000)</td>
 <tr>
 <td>top_level/display/</td>
-<td>7.014</td>
-<td>6.195(5.867)</td>
-<td>0.820(0.113)</td>
+<td>5.892</td>
+<td>5.892(5.858)</td>
 <tr>
 <td>top_level/display/dual_port_ram/</td>
-<td>5.980</td>
-<td>5.867(0.000)</td>
-<td>0.113(0.000)</td>
+<td>5.858</td>
+<td>5.858(0.000)</td>
 <tr>
 <td>top_level/pll_clock/</td>
-<td>3.210</td>
+<td>3.109</td>
 <td>3.109(0.000)</td>
-<td>0.100(0.000)</td>
 </table>
 <h2><a name="By_Clock_Domain">Power By Clock Domain:</a></h2>
 <table class="detail_table">
@@ -285,12 +279,12 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td>pll_clock/rpll_inst/CLKOUTD.default_gen_clk</td>
 <td>33.429</td>
-<td>2.307</td>
+<td>1.206</td>
 </tr>
 <tr>
 <td>pll_clock/rpll_inst/CLKOUT.default_gen_clk</td>
 <td>133.714</td>
-<td>6.972</td>
+<td>4.867</td>
 </tr>
 <tr>
 <td>NO CLOCK DOMAIN</td>

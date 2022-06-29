@@ -17,7 +17,7 @@
   "SubInsts" : [
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 41,
+    "InstLine" : 39,
     "InstName" : "pll_clock",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
     "ModuleLine" : 12,
@@ -25,7 +25,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 51,
+    "InstLine" : 49,
     "InstName" : "display",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
     "ModuleLine" : 5,
@@ -43,7 +43,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 68,
+    "InstLine" : 66,
     "InstName" : "adc",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
     "ModuleLine" : 6,

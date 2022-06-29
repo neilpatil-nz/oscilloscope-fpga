@@ -14,13 +14,11 @@ entity top_level is
     LCD_R     : out std_logic_vector(4 downto 0);
     LCD_G     : out std_logic_vector(5 downto 0);
     LCD_B     : out std_logic_vector(4 downto 0);
-    LEDG      : out std_logic;
     
     -- flash adc signals
     ADC_DATA      : in std_logic_vector(7 downto 0);
     ADC_WR_RDY    : in std_logic;
     ADC_RD        : out std_logic;
-    ADC_CS        : out std_logic;
     ADC_INT       : in std_logic
 );
 end entity;
@@ -76,9 +74,7 @@ begin
         adc_data_in => ADC_DATA,
         adc_wr_rdy => ADC_WR_RDY,
         adc_rd => ADC_RD,
-        adc_cs => ADC_CS,
         adc_int => ADC_INT,
-        ledg        => LEDG,
 
         adc_data_out => frame_bram_din,
         adc_data_wren => frame_bram_wren,

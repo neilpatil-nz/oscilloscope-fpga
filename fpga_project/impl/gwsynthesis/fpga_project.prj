@@ -10,6 +10,7 @@
         <File path="G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd" type="vhdl"/>
         <File path="G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd" type="vhdl"/>
         <File path="G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd" type="vhdl"/>
+        <File path="G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd" type="vhdl"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

@@ -9,6 +9,7 @@
         <File path="src/dual_bram/dual_bram.vhd" type="file.vhdl" enable="1"/>
         <File path="src/gowin_osc/gowin_osc.vhd" type="file.vhdl" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/gowin_sdpb/dual_bram.vhd" type="file.vhdl" enable="1"/>
         <File path="src/top_level.vhd" type="file.vhdl" enable="1"/>
         <File path="src/vga_controller.vhd" type="file.vhdl" enable="1"/>
         <File path="src/fpga_project.cst" type="file.cst" enable="1"/>

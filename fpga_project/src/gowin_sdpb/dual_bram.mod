@@ -6,7 +6,7 @@
 
 -mod_name dual_bram
 -file_name dual_bram
--path G:/Git/oscilloscope-fpga/fpga_project/src/dual_bram/
+-path G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/
 -type RAM_SDP
 -file_type vhdl
 -bram_b true
@@ -15,4 +15,4 @@
 -width_0 1
 -width_1 1
 -read_mode bypass
--reset_mode sync
+-reset_mode async

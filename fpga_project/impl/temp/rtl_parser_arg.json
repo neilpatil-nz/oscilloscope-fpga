@@ -29,6 +29,11 @@
    "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
    "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
+   "Type" : "vhdl"
   }
  ],
  "IncludePath" : [
