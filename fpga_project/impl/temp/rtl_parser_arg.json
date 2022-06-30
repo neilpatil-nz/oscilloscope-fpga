@@ -7,17 +7,17 @@
   },
   {
    "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_bram/dual_bram.vhd",
-   "Type" : "vhdl"
-  },
-  {
-   "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
    "Type" : "vhdl"
   },
   {
    "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
    "Type" : "vhdl"
   },
   {
@@ -32,7 +32,7 @@
   },
   {
    "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sp/single_port_bram.vhd",
    "Type" : "vhdl"
   }
  ],

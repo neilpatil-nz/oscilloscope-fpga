@@ -11,9 +11,7 @@ generic (
 );
 port(
     clock           : in std_logic;
-    ledg            : out std_logic;
     adc_data_in     : in std_logic_vector(7 downto 0);
-    adc_wr_rdy      : in std_logic;
     adc_rd          : out std_logic;
     adc_int         : in std_logic;
     
@@ -25,13 +23,21 @@ port(
 end entity;
 
 architecture rtl of adc_controller is
-constant t_new_conv : integer := 74; -- 1/(200MHz/110) = 550ns delay, min = 500ns
-type FSM_states is (START_CONV, POLLING_CONV, FINISHED_CONV, WAITING);
-signal adc_state : FSM_states := START_CONV;
-signal adc_mem_addr_count : unsigned(14 downto 0) := (others => '0');
+-- waiting state counter
+constant t_new_conv : integer := 100000; -- 1/(200MHz/110) = 550ns delay, min = 500ns
 signal waiting_state_count : integer := 0;
+
+type FSM_states is (START_CONV, POLLING_CONV, FINISHED_CONV, RESET, WAITING);
+signal adc_state : FSM_states := START_CONV;
+
+signal adc_mem_addr_count : unsigned(7 downto 0) := (others => '0');
 signal adc_data_latch : std_logic_vector(7 downto 0):= (others =>'0');
 signal adc_interrupt : std_logic := '0';
+
+-- frame buffer coutner
+signal reset_state_count : unsigned(14 downto 0) := (others => '0');
+
+
 begin
     -- latch the interrupt
     process(adc_int)
@@ -43,6 +49,7 @@ begin
         end if;
     end process;
 
+    -- adc controller
     process(clock)
     variable adc_conversion_temp : unsigned (6 downto 0) := (others =>'0');
     begin
@@ -64,16 +71,27 @@ begin
                 when FINISHED_CONV =>
                     if (adc_mem_addr_count < to_unsigned(200,adc_mem_addr_count'length)) then
                         adc_data_wren <= '1';
-                        adc_conversion_temp := resize(shift_right((unsigned(adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7);
---                        adc_data_addr  <= "0000000" & adc_data_latch;
+                        adc_conversion_temp := resize(shift_right((unsigned(adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
                         adc_data_addr <= std_logic_vector(adc_mem_addr_count + (adc_conversion_temp * to_unsigned(PIXELS_WIDTH, 8))) ; -- divide by 256, 2^8 
-                        adc_data_out  <= '1'; -- 1  -- convert adc_value into 
+
+                       -- write a white pixel
+                        adc_data_out  <= '1'; -- 1 indicates white
                         adc_mem_addr_count <= adc_mem_addr_count + 1;
+                        ADC_state <= WAITING;
                     else
                         adc_mem_addr_count <= (others =>'0'); -- reset counter 
-                        frame_bram_rst <= '1'; -- reset frame buffer 
+                        ADC_state <= RESET; -- reset frame buffer 
                     end if;
-                    ADC_state <= WAITING;
+                when RESET =>
+                    if (reset_state_count < to_unsigned(24000,reset_state_count'length)) then
+                        adc_data_addr <= std_logic_vector(reset_state_count);  
+                        adc_data_out  <= '0'; -- clear: 0 indicates black
+                        adc_data_wren <= '1';
+                        reset_state_count <= reset_state_count + 1;
+                    else
+                        reset_state_count <= (others =>'0'); -- reset counter 
+                        adc_state <= WAITING;
+                    end if;
                 when WAITING =>
                     if (waiting_state_count < t_new_conv) then
                         waiting_state_count <= waiting_state_count + 1;
@@ -84,4 +102,9 @@ begin
             end case;
         end if;
     end process;
+
+    
+    
+
+  
 end architecture;

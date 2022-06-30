@@ -17,7 +17,6 @@ entity top_level is
     
     -- flash adc signals
     ADC_DATA      : in std_logic_vector(7 downto 0);
-    ADC_WR_RDY    : in std_logic;
     ADC_RD        : out std_logic;
     ADC_INT       : in std_logic
 );
@@ -72,7 +71,6 @@ begin
         clock => sys_clock,
 
         adc_data_in => ADC_DATA,
-        adc_wr_rdy => ADC_WR_RDY,
         adc_rd => ADC_RD,
         adc_int => ADC_INT,
 

@@ -6,10 +6,10 @@
     <Device name="GW1N-1" pn="GW1N-LV1QN48C6/I5">gw1n1-004</Device>
     <FileList>
         <File path="src/adc_controller.vhd" type="file.vhdl" enable="1"/>
-        <File path="src/dual_bram/dual_bram.vhd" type="file.vhdl" enable="1"/>
         <File path="src/gowin_osc/gowin_osc.vhd" type="file.vhdl" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll.vhd" type="file.vhdl" enable="1"/>
         <File path="src/gowin_sdpb/dual_bram.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/gowin_sp/single_port_bram.vhd" type="file.vhdl" enable="1"/>
         <File path="src/top_level.vhd" type="file.vhdl" enable="1"/>
         <File path="src/vga_controller.vhd" type="file.vhdl" enable="1"/>
         <File path="src/fpga_project.cst" type="file.cst" enable="1"/>
