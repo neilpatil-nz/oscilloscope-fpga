@@ -6,8 +6,8 @@
 
 -mod_name Gowin_OSC
 -file_name gowin_osc
--path A:/Documents/fpga_project/src/gowin_osc/
+-path G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/
 -type OSC
 -file_type vhdl
 -dev_type GW1N-1
--freq_div 10
+-freq_div 2

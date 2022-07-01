@@ -1,0 +1,12 @@
+[General]
+ipc_version=4
+file=clock_sel
+module=clock_sel
+target_device=gw1n1-004
+type=clock_dcs
+version=1.0
+
+[Config]
+DCS_Mode=RISING
+Glitchless_Mode=true
+Language=1

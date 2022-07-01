@@ -12,12 +12,12 @@
 -file_type vhdl
 -dev_type GW1N-1
 -dyn_idiv_sel false
--idiv_sel 7
+-idiv_sel 3
 -dyn_fbdiv_sel false
--fbdiv_sel 39
+-fbdiv_sel 50
 -dyn_odiv_sel false
--odiv_sel 4
--dyn_sdiv_sel 4
+-odiv_sel 2
+-dyn_sdiv_sel 12
 -dyn_da_en true
 -rst_sig false
 -rst_sig_p false
@@ -31,4 +31,5 @@
 -en_clkoutd true
 -clkoutd_bypass false
 -clkoutd_src CLKOUT
--en_clkoutd3 false
+-en_clkoutd3 true
+-clkoutd3_src CLKOUT

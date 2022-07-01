@@ -4,7 +4,7 @@
 --GOWIN Version: V1.9.8.05
 --Part Number: GW1N-LV1QN48C6/I5
 --Device: GW1N-1
---Created Time: Thu Jun 30 11:09:13 2022
+--Created Time: Thu Jun 30 23:14:50 2022
 
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -171,7 +171,7 @@ begin
             READ_MODE => '0',
             BIT_WIDTH_0 => 1,
             BIT_WIDTH_1 => 1,
-            RESET_MODE => "ASYNC",
+            RESET_MODE => "SYNC",
             BLK_SEL_0 => "000",
             BLK_SEL_1 => "000"
         )
@@ -196,7 +196,7 @@ begin
             READ_MODE => '0',
             BIT_WIDTH_0 => 1,
             BIT_WIDTH_1 => 1,
-            RESET_MODE => "ASYNC",
+            RESET_MODE => "SYNC",
             BLK_SEL_0 => "001",
             BLK_SEL_1 => "001"
         )

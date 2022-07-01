@@ -17,7 +17,7 @@
   "SubInsts" : [
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 38,
+    "InstLine" : 44,
     "InstName" : "pll_clock",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
     "ModuleLine" : 12,
@@ -25,7 +25,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 48,
+    "InstLine" : 55,
     "InstName" : "display",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
     "ModuleLine" : 5,
@@ -33,7 +33,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
-      "InstLine" : 118,
+      "InstLine" : 161,
       "InstName" : "dual_port_ram",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
       "ModuleLine" : 12,
@@ -43,7 +43,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 65,
+    "InstLine" : 76,
     "InstName" : "adc",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
     "ModuleLine" : 6,
@@ -52,11 +52,11 @@
   ]
  },
  {
-  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sp/single_port_bram.vhd",
+  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
   "InstLine" : 12,
-  "InstName" : "single_port_bram",
-  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sp/single_port_bram.vhd",
+  "InstName" : "clock_sel",
+  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
   "ModuleLine" : 12,
-  "ModuleName" : "single_port_bram"
+  "ModuleName" : "clock_sel"
  }
 ]

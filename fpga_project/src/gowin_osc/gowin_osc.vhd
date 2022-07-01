@@ -1,10 +1,10 @@
---Copyright (C)2014-2021 Gowin Semiconductor Corporation.
+--Copyright (C)2014-2022 Gowin Semiconductor Corporation.
 --All rights reserved.
 --File Title: IP file
---GOWIN Version: V1.9.7.05Beta
+--GOWIN Version: V1.9.8.05
 --Part Number: GW1N-LV1QN48C6/I5
 --Device: GW1N-1
---Created Time: Sat Jun 18 13:48:23 2022
+--Created Time: Thu Jun 30 16:22:16 2022
 
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -30,7 +30,7 @@ architecture Behavioral of Gowin_OSC is
 begin
     osc_inst: OSCH
         generic map (
-            FREQ_DIV => 10
+            FREQ_DIV => 2
         )
         port map (
             OSCOUT => oscout

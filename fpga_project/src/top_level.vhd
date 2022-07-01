@@ -27,6 +27,8 @@ architecture rtl of top_level is
 -- clock signals
 signal disp_clock : std_logic := '0';
 signal sys_clock : std_logic := '0';
+signal main_clock : std_logic := '0';
+
 
 -- adc to frame buffer signals
 signal frame_bram_din : std_logic := '0';
@@ -34,11 +36,16 @@ signal frame_bram_wren : std_logic := '0';
 signal frame_bram_addr : std_logic_vector(14 downto 0) := (others =>'0');
 signal frame_bram_rst : std_logic := '0';
 
+-- frame buffer reset handshaking signals
+signal rst_bram_start : std_logic := '0';
+signal rst_bram_complete  : std_logic := '0';
+
 begin
     pll_clock : entity work.Gowin_rPLL
     port map(
-        clkout => sys_clock, --133.3mhz
+        clkout => main_clock, --400mhz
         clkoutd => disp_clock, --33.33mhz
+        clkoutd3 => sys_clock, --133.3mhz
         clkin => CLOCK_IN
     );   
     
@@ -47,6 +54,7 @@ begin
     -- display component 
     display : entity work.vga_controller
     port map(
+        main_clock => main_clock,
         pixel_clock => disp_clock,
         clock       => sys_clock,
         lcd_enable  => LCD_DEN,
@@ -58,7 +66,10 @@ begin
         frame_bram_din => frame_bram_din,
         frame_bram_wren => frame_bram_wren, 
         frame_bram_addr => frame_bram_addr,
-        frame_bram_rst => frame_bram_rst
+        frame_bram_rst => frame_bram_rst,
+
+        rst_bram_start => rst_bram_start, 
+        rst_bram_complete => rst_bram_complete
     );
    
     -- adc component 
@@ -69,7 +80,6 @@ begin
     )
     port map(
         clock => sys_clock,
-
         adc_data_in => ADC_DATA,
         adc_rd => ADC_RD,
         adc_int => ADC_INT,
@@ -77,7 +87,10 @@ begin
         adc_data_out => frame_bram_din,
         adc_data_wren => frame_bram_wren,
         adc_data_addr => frame_bram_addr,
-        frame_bram_rst => frame_bram_rst
+        frame_bram_rst => frame_bram_rst,
+        
+        rst_bram_start => rst_bram_start, 
+        rst_bram_complete => rst_bram_complete
     );
 --    
 

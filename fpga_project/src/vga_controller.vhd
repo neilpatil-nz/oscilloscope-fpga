@@ -4,6 +4,7 @@ use ieee.std_logic_1164.all;
 
 entity vga_controller is
     port(
+    main_clock      : in std_logic; -- 400mhz
     clock           : in std_logic;
     pixel_clock     : in std_logic;
 
@@ -18,7 +19,10 @@ entity vga_controller is
     frame_bram_din   : in std_logic;
     frame_bram_wren  : in std_logic;
     frame_bram_addr  : in std_logic_vector(14 downto 0);
-    frame_bram_rst   : in std_logic
+    frame_bram_rst   : in std_logic;
+
+    rst_bram_start  : in std_logic;
+    rst_bram_complete: out std_logic
 );
 end entity;
 
@@ -46,6 +50,15 @@ constant HS_Pixel : integer := x_Width + x_FrontPorch + x_BackPorch;
 -- vsync top value 
 constant VS_Line  : integer := y_Height + y_FrontPorch + y_BackPorch;
 
+-- colour signals
+constant COLOUR_NUM_WIDTH : integer := 2;
+constant COLOUR_DATA_WIDTH : integer := 6;
+constant signal_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "01";
+constant grid_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "10";
+
+signal grid_line_y_en : std_logic := '0';
+signal grid_line_x_en : std_logic := '0';
+
 -- x and y pixel counters 
 signal x_Count : integer range 0 to HS_Pixel := 0;
 signal y_Count : integer range 0 to VS_Line := 0;
@@ -57,7 +70,7 @@ signal y_Pixel :unsigned(ADDRESS_WIDTH-1 downto 0) := (others =>'0');
 -- output interfacing signals
 signal sig_vsync : std_logic := '0';
 signal sig_hsync : std_logic := '0';
-signal output_lcd : std_logic_vector(5 downto 0) := (others => '0');
+signal output_lcd : std_logic_vector(COLOUR_NUM_WIDTH-1 downto 0) := (others => '0');
 signal sig_lcd_enable : std_logic := '0';
 
 -- bram signals
@@ -68,6 +81,17 @@ signal bram_rd_clk_en : std_logic := '1';
 signal bram_rst : std_logic := '0';
 signal bram_wr_addr : std_logic_vector(ADDRESS_WIDTH - 1 downto 0) :=  (others =>'0'); --synthesis keep
 signal bram_rd_addr : std_logic_vector(ADDRESS_WIDTH - 1 downto 0) := (others =>'0');--synthesis keep 
+signal bram_wr_clk : std_logic := '0';
+signal bram_wr_clk_sel : std_logic_vector(3 downto 0) := (others =>'0');
+
+-- frame bram reset signals
+signal rst_frame_buffer_count : unsigned(14 downto 0) := (others => '0');
+constant rst_frame_buffer_top : unsigned(14 downto 0) := to_unsigned(24000,rst_frame_buffer_count'length) - 1;
+signal rst_data_addr          : std_logic_vector(14 downto 0) := (others => '0');
+signal rst_data_wren          : std_logic := '0';
+signal rst_data_out           : std_logic := '0';
+
+
 
 begin
     -- hsync and vysnc gen
@@ -99,26 +123,45 @@ begin
     -- memory addressing
     x_Pixel <=  shift_right(to_unsigned(x_Count-x_BackPorch, x_Pixel'length), 2);
     y_Pixel <=  to_unsigned((to_integer(unsigned(shift_right(to_unsigned(y_Count, y_Pixel'length), 2))) * x_Width_Buffer),  y_Pixel'length);
-    
+        
+    grid_line_y_en <= '1' when y_Count >= 60 and y_Count < 62 else   -- 5V
+                    '1' when y_Count >= 120 and y_Count < 122 else -- 4.375V
+                    '1' when y_Count >= 180 and y_Count < 182 else -- 3.75V
+                    '1' when y_Count >= 240 and y_Count < 242 else -- 3.125V
+                    '1' when y_Count >= 300 and y_Count < 302 else -- 2.5V
+                    '1' when y_Count >= 360 and y_Count < 362 else -- 1.875V 
+                    '1' when y_Count >= 420 and y_Count < 422 else -- 1.25V
+                    '1' when y_Count >= 480 and y_Count < 482 else -- 0.625V
+                    '0';
+
+    grid_line_x_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 200 and x_Count < 202) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 400 and x_Count < 402) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 600 and x_Count < 602) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 800 and x_Count < 802) else 
+                      '0';
+
     -- bram signals (din)
-    bram_din(0) <= frame_bram_din;
-    bram_wr_addr <= frame_bram_addr;
-    bram_wr_clk_en <= frame_bram_wren;
+    bram_din(0) <= rst_data_out when rst_data_wren = '1' else frame_bram_din;
+    bram_wr_addr <= rst_data_addr when rst_data_wren = '1' else frame_bram_addr;
+    bram_wr_clk_en <= frame_bram_wren or rst_data_wren;
+    bram_wr_clk_sel <= "0010" when rst_data_wren = '1' else "0001";
 
     -- bram signals (qout)
     bram_rd_addr <= std_logic_vector(x_Pixel + y_Pixel) when sig_lcd_enable ='1' else (others =>'0');
    
     -- prevent accessing same address
-    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' and bram_wr_clk_en = '0') else '0';
+    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' and bram_rd_addr /= bram_wr_addr) else '0';
     
     -- reset bram 
     bram_rst <= frame_bram_rst;
 
+    bram_wr_clk <= clock;
+    
     -- framebuffer for display
     dual_port_ram: entity work.dual_bram
     port map (
         dout    => bram_qout,
-        clka    => clock,
+        clka    => bram_wr_clk,
         cea     => bram_wr_clk_en,
         reseta  => bram_rst,
         clkb    => pixel_clock,
@@ -130,6 +173,41 @@ begin
         oce     => '0'
     );
 
+--     framebuffer for display
+--    clock_sel: entity work.clock_sel
+--    port map (
+--        clkout => bram_wr_clk,
+--        clksel => bram_wr_clk_sel,
+--        clk0 => clock,     
+--        clk1 => main_clock,
+--        clk2 => '0',
+--        clk3 => '0'
+--    );
+
+    -- frame buffer reset controller
+    process(clock)
+    begin
+        if(rising_edge(clock)) then
+            if (rst_bram_start = '1') then
+                if (rst_frame_buffer_count < rst_frame_buffer_top) then
+                    rst_data_addr <= std_logic_vector(rst_frame_buffer_count);  
+                    rst_data_out  <= '0'; -- clear: 0 indicates black
+                    rst_data_wren <= '1';
+                    rst_bram_complete <= '0';
+                    rst_frame_buffer_count <= rst_frame_buffer_count + 1;
+                else
+                    rst_bram_complete <= '1';
+                    rst_data_wren <= '0';
+                end if;
+            else 
+                rst_frame_buffer_count <= (others =>'0');
+                rst_data_wren <= '0';
+                rst_bram_complete <= '0';
+            end if;
+        end if;
+    end process;
+
+
     -- output signals
     lcd_hsync <= sig_hsync;
     lcd_vsync <= sig_vsync;
@@ -137,10 +215,12 @@ begin
     -- lcd enable
     lcd_enable <= sig_lcd_enable;
 
-    output_lcd <= "111111" when (bram_qout(0) = '1') else "000000";
-    
-    lcd_b <= output_lcd(4 downto 0);
-    lcd_r <= output_lcd(4 downto 0);
-    lcd_g <= output_lcd;
+    output_lcd <= signal_lcd when (bram_qout(0) = '1') else 
+                  grid_lcd when grid_line_y_en = '1' or grid_line_x_en = '1' else "00";
+
+    lcd_r <= "00011" when output_lcd = grid_lcd else "00000";
+    lcd_g <= "100000" when output_lcd = signal_lcd else 
+             "000011" when output_lcd = grid_lcd else "000000";
+    lcd_b <= "00011" when output_lcd = grid_lcd else "00000";
     
 end architecture;

@@ -32,7 +32,7 @@
   },
   {
    "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sp/single_port_bram.vhd",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
    "Type" : "vhdl"
   }
  ],

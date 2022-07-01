@@ -7,6 +7,6 @@ type=clock_osc
 version=3.0
 
 [Config]
-FREQ=10
+FREQ=2
 LANG=1
 REGULATOR_ENABLE=false

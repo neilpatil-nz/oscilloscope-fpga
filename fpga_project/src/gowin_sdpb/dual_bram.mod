@@ -15,4 +15,4 @@
 -width_0 1
 -width_1 1
 -read_mode bypass
--reset_mode async
+-reset_mode sync
