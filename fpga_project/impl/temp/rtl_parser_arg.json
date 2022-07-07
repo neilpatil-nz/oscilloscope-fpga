@@ -7,6 +7,11 @@
   },
   {
    "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
    "Type" : "vhdl"
   },
@@ -28,11 +33,6 @@
   {
    "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
-   "Type" : "vhdl"
-  },
-  {
-   "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
    "Type" : "vhdl"
   }
  ],

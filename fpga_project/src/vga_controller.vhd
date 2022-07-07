@@ -134,10 +134,10 @@ begin
                     '1' when y_Count >= 480 and y_Count < 482 else -- 0.625V
                     '0';
 
-    grid_line_x_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 200 and x_Count < 202) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 400 and x_Count < 402) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 600 and x_Count < 602) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 800 and x_Count < 802) else 
+    grid_line_x_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 200+x_BackPorch and x_Count < 202+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 400+x_BackPorch and x_Count < 402+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 600+x_BackPorch and x_Count < 602+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 800+x_BackPorch and x_Count < 802+x_BackPorch) else 
                       '0';
 
     -- bram signals (din)

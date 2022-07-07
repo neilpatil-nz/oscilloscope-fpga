@@ -1,5 +1,13 @@
 [
  {
+  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
+  "InstLine" : 12,
+  "InstName" : "clock_sel",
+  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
+  "ModuleLine" : 12,
+  "ModuleName" : "clock_sel"
+ },
+ {
   "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
   "InstLine" : 12,
   "InstName" : "Gowin_OSC",
@@ -50,13 +58,5 @@
     "ModuleName" : "adc_controller"
    }
   ]
- },
- {
-  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
-  "InstLine" : 12,
-  "InstName" : "clock_sel",
-  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
-  "ModuleLine" : 12,
-  "ModuleName" : "clock_sel"
  }
 ]
