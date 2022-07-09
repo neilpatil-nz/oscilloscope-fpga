@@ -29,8 +29,12 @@ signal disp_clock : std_logic := '0';
 signal sys_clock : std_logic := '0';
 signal main_clock : std_logic := '0';
 
+-- adc to line draw signals
+signal adc_data_out : std_logic_vector(6 downto 0) := (others =>'0');
+signal adc_data_wren: std_logic := '0';
+signal adc_data_addr : std_logic_vector(7 downto 0) := (others =>'0');
 
--- adc to frame buffer signals
+-- line draw to frame buffer signals
 signal frame_bram_din : std_logic := '0';
 signal frame_bram_wren : std_logic := '0';
 signal frame_bram_addr : std_logic_vector(14 downto 0) := (others =>'0');
@@ -84,9 +88,9 @@ begin
         adc_rd => ADC_RD,
         adc_int => ADC_INT,
 
-        adc_data_out => frame_bram_din,
-        adc_data_wren => frame_bram_wren,
-        adc_data_addr => frame_bram_addr,
+        adc_data_out => adc_data_out,
+        adc_data_wren => adc_data_wren,
+        adc_data_addr => adc_data_addr,
         frame_bram_rst => frame_bram_rst,
         
         rst_bram_start => rst_bram_start, 
