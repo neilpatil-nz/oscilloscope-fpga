@@ -31,8 +31,8 @@ constant ADDRESS_WIDTH : integer := 8;
 constant DATA_WIDTH    : integer := 7;
 
 -- waiting state counter
-constant t_new_conv : integer := 200000; -- 1/(200MHz/110) = 550ns delay, min = 500ns
-signal waiting_state_count : integer := 0;
+signal waiting_state_count : unsigned(15 downto 0) := (others =>'0');
+constant t_new_conv : unsigned(15 downto 0)  := to_unsigned(50000, waiting_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);
 signal adc_state : FSM_states := START_CONV;
@@ -106,7 +106,7 @@ begin
                         adc_rd <= '0';
                     end if;
                 when FINISHED_CONV =>
-                    if (adc_mem_addr_count < sig_pixel_width) then
+                    if (adc_mem_addr_count < sig_pixel_width-1) then
                         adc_conversion_temp := resize(shift_right((unsigned(not adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
                         adc_bram_din <= std_logic_vector(adc_conversion_temp) ; -- divide by 256, 2^8 
                         adc_bram_wr_addr <= std_logic_vector(adc_mem_addr_count);
@@ -115,7 +115,6 @@ begin
                         adc_mem_addr_count <= adc_mem_addr_count + 1;
                         ADC_state <= WAITING;
                     else
-                        adc_mem_addr_count <= (others =>'0'); -- reset counter 
                         ADC_state <= RESET_DISP; -- reset frame buffer 
                     end if;
                 when RESET_DISP => 
@@ -123,12 +122,13 @@ begin
                         start_disp_draw <= '1';
                     else
                         adc_state <= START_CONV;
+                        adc_mem_addr_count <= (others =>'0'); -- reset counter 
                     end if;
                 when WAITING =>
                     if (waiting_state_count < t_new_conv) then
                         waiting_state_count <= waiting_state_count + 1;
                     else
-                        waiting_state_count <= 0;
+                        waiting_state_count <= (others => '0');
                         ADC_state <= START_CONV;
                     end if;
             end case;
