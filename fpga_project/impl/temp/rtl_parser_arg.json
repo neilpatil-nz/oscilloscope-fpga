@@ -32,7 +32,7 @@
   },
   {
    "Library" : "work",
-   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/line_draw_controller.vhd",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/line_drawer.vhd",
    "Type" : "vhdl"
   },
   {

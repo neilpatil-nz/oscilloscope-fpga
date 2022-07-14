@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module name="top_level">
     <SubModule name="pll_clock"/>
-    <SubModule name="display" Register="53" Alu="65" Lut="100">
+    <SubModule name="display" Register="53" Alu="52" Lut="99">
         <SubModule name="dual_port_ram" Register="1" Lut="1" Bsram="2"/>
     </SubModule>
-    <SubModule name="adc" Register="45" Alu="38" Lut="26"/>
+    <SubModule name="adc" Register="66" Alu="62" Lut="47">
+        <SubModule name="adc_data_buffer" Bsram="1"/>
+    </SubModule>
+    <SubModule name="line_draw" Register="113" Alu="51" Lut="115"/>
 </Module>
