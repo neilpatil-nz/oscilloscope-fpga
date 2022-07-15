@@ -30,17 +30,20 @@ signal voltage_y1 : unsigned(6 downto 0) := (others =>'0');
 signal addr_x_count : unsigned(7 downto 0) := (others => '0');
 signal addr_x_value : unsigned(7 downto 0) := (others => '0');
 signal addr_y_value : unsigned(6 downto 0) := (others =>'0');
+signal addr_y_sub_value : unsigned(6 downto 0) := (others =>'0');
+signal addr_y_add_value : unsigned(6 downto 0) := (others =>'0');
 signal addr_y_value_mult : unsigned(14 downto 0) := (others =>'0');
 signal addr_y_value_unsigned : unsigned(14 downto 0) := (others =>'0');
 
 constant ADC_ADDRESS_DEPTH : unsigned(7 downto 0) := to_unsigned(200,addr_x_count'length)-1;
 
 -- line draw controller state
-type FSM_states_line_draw is (IDLE, LOAD_X0, LOAD_Y0, LOAD_X1, LOAD_Y1, DETERMINE_DIRECTION, DRAW_STRAIGHT, DRAW_DOWN, DRAW_UP, MULT_DATA_0, MULT_DATA_1, MULT_DATA_2, MULT_DATA_3, ADD_DATA, WRITE_DATA,INCREMENT_Y, DECREMENT_Y, FINISHED);
+type FSM_states_line_draw is (IDLE, LOAD_X0, LOAD_Y0, LOAD_X1, LOAD_Y1, DETERMINE_DIRECTION, DRAW_STRAIGHT, DRAW_DOWN, DRAW_UP, MULT_DATA_0, MULT_DATA_1, MULT_DATA_2, MULT_DATA_3, ADD_DATA, WRITE_DATA, SET_Y_END, INCREMENT_Y, DECREMENT_Y, FINISHED);
 signal line_draw_state : FSM_states_line_draw := IDLE;
 signal line_draw_state_next : FSM_states_line_draw := IDLE;
 
 begin
+    
     process(clock)
     begin
         if (rising_edge(clock)) then
@@ -56,29 +59,35 @@ begin
                 when LOAD_X0 => -- requires 1 clock cycle to access ram contents
                     adc_data_addr <= std_logic_vector(addr_x_count);
                     time_x0 <= addr_x_count;
+--                    time_x0 <= to_unsigned(0,time_x0'length);
                     line_draw_state <= LOAD_Y0;  
                     adc_data_wren <= '1';
                 when LOAD_Y0 =>
                     line_draw_state <= LOAD_X1;
                     voltage_y0 <= unsigned(adc_data_in);
+--                    voltage_y0 <= to_unsigned(0,voltage_y0'length);
                 when LOAD_X1 =>
-                    adc_data_addr <= std_logic_vector(addr_x_count + 1);
-                    time_x1 <= addr_x_count + 1;
+                    adc_data_addr <= std_logic_vector(time_x0 + 1);
+                    time_x1 <= time_x0 + 1;
+--                    time_x1 <= to_unsigned(199,time_x0'length);
                     line_draw_state <= LOAD_Y1;
                     adc_data_wren <= '1';
                 when LOAD_Y1 =>
                     voltage_y1 <= unsigned(adc_data_in);
+--                    voltage_y1 <= to_unsigned(118,voltage_y1'length);
                     line_draw_state <= DETERMINE_DIRECTION;
                 when DETERMINE_DIRECTION =>
                     addr_x_value <= time_x0;
                     addr_y_value <= voltage_y0;
-                     if (voltage_y0 < voltage_y1) then -- greater y value = bottom of the display
+                     if (voltage_y0 > voltage_y1) then -- greater y value = bottom of the display
                          line_draw_state_next <= DRAW_UP;
-                     elsif (voltage_y0 > voltage_y1) then
+                     elsif (voltage_y0 < voltage_y1) then
                          line_draw_state_next <= DRAW_DOWN;
-                     else   
+                     elsif (voltage_y0 = voltage_y1) then
                          line_draw_state_next <= DRAW_STRAIGHT;
-                     end if;     
+                     end if;  
+                         line_draw_state_next <= DRAW_STRAIGHT;
+   
                     line_draw_state <= MULT_DATA_0;
                 when MULT_DATA_0 =>
                     addr_y_value_unsigned <= "00000000" & addr_y_value;
@@ -106,37 +115,41 @@ begin
                     line_draw_state <= MULT_DATA_0;
                     line_draw_state_next <= FINISHED;
                 when DRAW_DOWN =>
-                    if (addr_y_value = voltage_y1) then
-                        addr_y_value <= voltage_y1;
-                        addr_x_value <= time_x1;
-                        line_draw_state_next <= FINISHED;
-                        line_draw_state <= MULT_DATA_0;
-                    else
+                    if (addr_y_value < voltage_y1) then
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_DOWN;
                         line_draw_state <= INCREMENT_Y;
-                    end if;
-                when DRAW_UP => 
-                    if (addr_y_value = voltage_y1) then
-                        addr_y_value <= voltage_y1;
+                            
+addr_y_add_value <= addr_y_value + "0000001";
+                    else
                         addr_x_value <= time_x1;
                         line_draw_state_next <= FINISHED;
-                        line_draw_state <= MULT_DATA_0;
-                    else
+                        line_draw_state <= SET_Y_END;
+                    end if;
+                when DRAW_UP => 
+                    if (addr_y_value > voltage_y1) then
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_UP;
                         line_draw_state <= DECREMENT_Y;
+addr_y_sub_value <= addr_y_value + "1111111";
+                    else
+                        addr_x_value <= time_x1;
+                        line_draw_state_next <= FINISHED;
+                        line_draw_state <= SET_Y_END;
                     end if;
+                when SET_Y_END =>
+                    addr_y_value <= voltage_y1;
+                    line_draw_state <= MULT_DATA_0;
                 when INCREMENT_Y =>
-                    addr_y_value <= addr_y_value + "0000001";
+                    addr_y_value <= addr_y_add_value;
                     line_draw_state <= MULT_DATA_0;
                 when DECREMENT_Y =>
-                    addr_y_value <= addr_y_value + "1111111";
+                    addr_y_value <= addr_y_sub_value;
                     line_draw_state <= MULT_DATA_0;
                 when FINISHED =>
                     if (addr_x_count < ADC_ADDRESS_DEPTH-2) then
                         addr_x_count <= addr_x_count + 1;
-                        line_draw_state <= IDLE;
+                        line_draw_state <= LOAD_X0;
                     else 
                         addr_x_count <= (others => '0');
                         line_draw_state <= IDLE;

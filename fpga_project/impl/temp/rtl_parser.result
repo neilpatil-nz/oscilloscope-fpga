@@ -59,7 +59,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
-      "InstLine" : 168,
+      "InstLine" : 178,
       "InstName" : "adc_data_buffer",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
       "ModuleLine" : 12,

@@ -31,13 +31,16 @@ constant ADDRESS_WIDTH : integer := 8;
 constant DATA_WIDTH    : integer := 7;
 
 -- waiting state counter
-signal waiting_state_count : unsigned(15 downto 0) := (others =>'0');
-constant t_new_conv : unsigned(15 downto 0)  := to_unsigned(50000, waiting_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+signal waiting_state_count : unsigned(16 downto 0) := (others =>'0');
+constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+
+signal refresh_state_count : unsigned(31 downto 0) := (others =>'0');
+constant t_top_count : unsigned(31 downto 0)  := to_unsigned(10000000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);
 signal adc_state : FSM_states := START_CONV;
 
-type DISP_states is (IDLE, RESET, DRAW);
+type DISP_states is (IDLE, RESET, DRAW, FINISHED);
 signal disp_state : DISP_states := IDLE;
 
 signal start_disp_draw : std_logic := '0';
@@ -157,6 +160,13 @@ begin
                     if (finished_drawing = '0') then
                         start_drawing <= '1';
                     else
+                        disp_state <= FINISHED;
+                    end if;
+                when FINISHED =>
+                     if (refresh_state_count < t_top_count) then
+                        refresh_state_count <= refresh_state_count + 1;
+                    else
+                        refresh_state_count <= (others => '0');
                         disp_state <= IDLE;
                         finished_disp_draw <= '1';
                     end if;
