@@ -16,6 +16,7 @@
         <File path="src/top_level.vhd" type="file.vhdl" enable="1"/>
         <File path="src/vga_controller.vhd" type="file.vhdl" enable="1"/>
         <File path="src/fpga_project.cst" type="file.cst" enable="1"/>
+        <File path="src/adc_test.mi" type="file.other" enable="1"/>
         <File path="src/test.mi" type="file.other" enable="1"/>
     </FileList>
 </Project>

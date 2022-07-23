@@ -16,3 +16,5 @@
 -width_1 7
 -read_mode bypass
 -reset_mode sync
+-init_file G:/Git/oscilloscope-fpga/fpga_project/src/adc_test.mi
+-init_match port_A

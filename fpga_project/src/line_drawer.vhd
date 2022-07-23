@@ -86,7 +86,7 @@ begin
                      elsif (voltage_y0 = voltage_y1) then
                          line_draw_state_next <= DRAW_STRAIGHT;
                      end if;  
-                         line_draw_state_next <= DRAW_STRAIGHT;
+--                         line_draw_state_next <= DRAW_STRAIGHT;
    
                     line_draw_state <= MULT_DATA_0;
                 when MULT_DATA_0 =>
@@ -115,7 +115,7 @@ begin
                     line_draw_state <= MULT_DATA_0;
                     line_draw_state_next <= FINISHED;
                 when DRAW_DOWN =>
-                    if (addr_y_value < voltage_y1) then
+                    if (addr_y_value /= voltage_y1) then
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_DOWN;
                         line_draw_state <= INCREMENT_Y;
@@ -127,7 +127,7 @@ addr_y_add_value <= addr_y_value + "0000001";
                         line_draw_state <= SET_Y_END;
                     end if;
                 when DRAW_UP => 
-                    if (addr_y_value > voltage_y1) then
+                    if (addr_y_value /= voltage_y1) then
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_UP;
                         line_draw_state <= DECREMENT_Y;
@@ -147,8 +147,8 @@ addr_y_sub_value <= addr_y_value + "1111111";
                     addr_y_value <= addr_y_sub_value;
                     line_draw_state <= MULT_DATA_0;
                 when FINISHED =>
-                    if (addr_x_count < ADC_ADDRESS_DEPTH-2) then
-                        addr_x_count <= addr_x_count + 1;
+                    if (addr_x_count < ADC_ADDRESS_DEPTH-1) then
+                        addr_x_count <= addr_x_count + 2;
                         line_draw_state <= LOAD_X0;
                     else 
                         addr_x_count <= (others => '0');
