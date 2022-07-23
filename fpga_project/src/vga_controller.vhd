@@ -91,22 +91,24 @@ signal rst_data_addr          : std_logic_vector(14 downto 0) := (others => '0')
 signal rst_data_wren          : std_logic := '0';
 signal rst_data_out           : std_logic := '0';
 
-
-
+type RST_states is (IDLE, RESETTING, INCREMENT_ADD, FINISHED);
+signal rst_state : RST_states := IDLE;
 begin
     -- hsync and vysnc gen
     process(pixel_clock)
     begin
         if (rising_edge(pixel_clock)) then
-            if( x_Count = HS_Pixel) then
-                x_Count <= 0;
-                y_Count <= y_Count + 1;
-            elsif( y_Count = VS_Line) then
-                x_Count <= 0;
-                y_Count <= 0;
-            else 
-                x_Count <= x_Count + 1;
-            end if;
+--            if (frame_bram_wren ='0') then
+                if( x_Count = HS_Pixel) then
+                    x_Count <= 0;
+                    y_Count <= y_Count + 1;
+                elsif( y_Count = VS_Line) then
+                    x_Count <= 0;
+                    y_Count <= 0;
+                else 
+                    x_Count <= x_Count + 1;
+                end if;
+--            end if;
         end if;
     end process;
     
@@ -150,10 +152,10 @@ begin
     bram_rd_addr <= std_logic_vector(x_Pixel + y_Pixel) when sig_lcd_enable ='1' else (others =>'0');
    
     -- prevent accessing same address
-    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' and bram_rd_addr /= bram_wr_addr) else '0';
+    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' AND frame_bram_wren ='0') else '0';
     
     -- reset bram 
-    bram_rst <= frame_bram_rst;
+    bram_rst <= '0';
 
     bram_wr_clk <= clock;
     
@@ -188,22 +190,33 @@ begin
     process(clock)
     begin
         if(rising_edge(clock)) then
-            if (rst_bram_start = '1') then
-                if (rst_frame_buffer_count < rst_frame_buffer_top) then
-                    rst_data_addr <= std_logic_vector(rst_frame_buffer_count);  
-                    rst_data_out  <= '0'; -- clear: 0 indicates black
-                    rst_data_wren <= '1';
-                    rst_bram_complete <= '0';
+            case (rst_state) is 
+                when IDLE =>
+                    if (rst_bram_start = '1') then
+                        rst_state <= RESETTING; 
+                    else
+                        rst_frame_buffer_count <= (others =>'0');
+                        rst_data_wren <= '0';
+                        rst_bram_complete <= '0';
+                    end if;
+                when RESETTING =>
+                    if (rst_frame_buffer_count < rst_frame_buffer_top) then
+                        rst_data_addr <= std_logic_vector(rst_frame_buffer_count);  
+                        rst_data_out  <= '0'; -- clear: 0 indicates black
+                        rst_data_wren <= '1';
+                        rst_bram_complete <= '0';
+                        rst_state <= INCREMENT_ADD;
+                    else 
+                        rst_state <= FINISHED;
+                    end if;
+                when INCREMENT_ADD =>
                     rst_frame_buffer_count <= rst_frame_buffer_count + 1;
-                else
+                    rst_state <= RESETTING; 
+                when FINISHED =>
                     rst_bram_complete <= '1';
                     rst_data_wren <= '0';
-                end if;
-            else 
-                rst_frame_buffer_count <= (others =>'0');
-                rst_data_wren <= '0';
-                rst_bram_complete <= '0';
-            end if;
+                    rst_state <= IDLE;
+            end case;
         end if;
     end process;
 

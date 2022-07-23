@@ -7,6 +7,11 @@
   },
   {
    "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
    "Type" : "vhdl"
   },
@@ -23,6 +28,11 @@
   {
    "Library" : "work",
    "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
+   "Type" : "vhdl"
+  },
+  {
+   "Library" : "work",
+   "Path" : "G:/Git/oscilloscope-fpga/fpga_project/src/line_drawer.vhd",
    "Type" : "vhdl"
   },
   {

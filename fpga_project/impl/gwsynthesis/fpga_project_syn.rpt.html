@@ -56,10 +56,12 @@ table.detail_table td.label { min-width: 100px; width: 8%;}
 <tr>
 <td class="label">Design File</td>
 <td>G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd<br>
+G:\Git\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd<br>
+G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd<br>
 G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </td>
@@ -82,7 +84,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Mon Jul 04 10:29:38 2022
+<td>Sat Jul 23 13:57:26 2022
 </td>
 </tr>
 <tr>
@@ -98,11 +100,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Synthesis Process</td>
-<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.203s, Elapsed time = 0h 0m 0.166s, Peak memory usage = 101.633MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.017s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.006s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.024s, Peak memory usage = 101.633MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.002s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.001s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.002s, Peak memory usage = 101.633MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.019s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.005s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.005s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 0.437s, Elapsed time = 0h 0m 0.439s, Peak memory usage = 101.633MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.058s, Peak memory usage = 101.633MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.021s, Peak memory usage = 101.633MB<br/></td>
+<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.234s, Elapsed time = 0h 0m 0.205s, Peak memory usage = 183.305MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.031s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.015s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.046s, Peak memory usage = 183.305MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.006s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 183.305MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.044s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.014s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.017s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 0.656s, Elapsed time = 0h 0m 0.68s, Peak memory usage = 183.305MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.074s, Peak memory usage = 183.305MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.036s, Peak memory usage = 183.305MB<br/></td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 0.808s, Elapsed time = 0h 0m 0.768s, Peak memory usage = 101.633MB</td>
+<td>CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 183.305MB</td>
 </tr>
 </table>
 <h1><a name="resource">Resource</a></h1>
@@ -130,39 +132,47 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label"><b>Register </b></td>
-<td>115</td>
+<td>276</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFF</td>
-<td>2</td>
+<td>22</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFE</td>
-<td>43</td>
+<td>170</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFS</td>
+<td>2</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFSE</td>
+<td>1</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFR</td>
-<td>17</td>
+<td>25</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFRE</td>
-<td>53</td>
+<td>56</td>
 </tr>
 <tr>
 <td class="label"><b>LUT </b></td>
-<td>130</td>
+<td>326</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT2</td>
-<td>30</td>
+<td>53</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT3</td>
-<td>45</td>
+<td>79</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT4</td>
-<td>55</td>
+<td>194</td>
 </tr>
 <tr>
 <td class="label"><b>MUX </b></td>
@@ -174,27 +184,27 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label"><b>ALU </b></td>
-<td>153</td>
+<td>188</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspALU</td>
-<td>153</td>
+<td>188</td>
 </tr>
 <tr>
 <td class="label"><b>INV </b></td>
-<td>11</td>
+<td>14</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspINV</td>
-<td>11</td>
+<td>14</td>
 </tr>
 <tr>
 <td class="label"><b>BSRAM </b></td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspSDPB</td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr>
 <td class="label"><b>CLOCK </b></td>
@@ -214,13 +224,13 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>295(142 LUTs, 153 ALUs) / 1152</td>
-<td>26%</td>
+<td>529(341 LUTs, 188 ALUs) / 1152</td>
+<td>46%</td>
 </tr>
 <tr>
 <td class="label">Register</td>
-<td>115 / 945</td>
-<td>12%</td>
+<td>276 / 945</td>
+<td>29%</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as Latch</td>
@@ -229,13 +239,13 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as FF</td>
-<td>115 / 945</td>
-<td>12%</td>
+<td>276 / 945</td>
+<td>29%</td>
 </tr>
 <tr>
 <td class="label">BSRAM</td>
-<td>2 / 4</td>
-<td>50%</td>
+<td>3 / 4</td>
+<td>75%</td>
 </tr>
 </table>
 <h1><a name="timing">Timing</a></h1>
@@ -322,16 +332,16 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1</td>
 <td>pll_clock/rpll_inst/CLKOUTD.default_gen_clk</td>
 <td>33.3(MHz)</td>
-<td>80.6(MHz)</td>
-<td>10</td>
+<td>89.6(MHz)</td>
+<td>9</td>
 <td>TOP</td>
 </tr>
 <tr>
 <td>2</td>
 <td>pll_clock/rpll_inst/CLKOUTD3.default_gen_clk</td>
 <td>133.3(MHz)</td>
-<td>130.6(MHz)</td>
-<td>5</td>
+<td>126.8(MHz)</td>
+<td>6</td>
 <td>TOP</td>
 </tr>
 </table>
@@ -341,11 +351,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>-0.154</td>
+<td>-0.385</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>9.339</td>
+<td>9.570</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
@@ -353,11 +363,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>display/rst_frame_buffer_count_4_s0</td>
+<td>line_draw/voltage_y0_0_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>display/rst_frame_buffer_count_0_s1</td>
+<td>line_draw/line_draw_state_next_0_s2</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -391,7 +401,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -400,87 +410,167 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_4_s0/CLK</td>
+<td>line_draw/voltage_y0_0_s0/CLK</td>
 </tr>
 <tr>
 <td>2.543</td>
 <td>0.458</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>3</td>
-<td>display/rst_frame_buffer_count_4_s0/Q</td>
+<td>4</td>
+<td>line_draw/voltage_y0_0_s0/Q</td>
 </tr>
 <tr>
 <td>3.023</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s5/I1</td>
+<td>2</td>
+<td>line_draw/n45_s14/I1</td>
 </tr>
 <tr>
-<td>4.122</td>
-<td>1.099</td>
+<td>4.068</td>
+<td>1.045</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s5/F</td>
+<td>line_draw/n45_s14/COUT</td>
 </tr>
 <tr>
-<td>4.602</td>
+<td>4.068</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s15/CIN</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s15/COUT</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s16/CIN</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s16/COUT</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s17/CIN</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s17/COUT</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s18/CIN</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s18/COUT</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/CIN</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/COUT</td>
+</tr>
+<tr>
+<td>4.833</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/I1</td>
+<td>line_draw/line_draw_state_next_12_s4/I1</td>
 </tr>
 <tr>
-<td>5.701</td>
+<td>5.932</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s2/F</td>
+<td>2</td>
+<td>line_draw/line_draw_state_next_12_s4/F</td>
 </tr>
 <tr>
-<td>6.181</td>
+<td>6.412</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s1/I1</td>
+<td>line_draw/n98_s4/I1</td>
 </tr>
 <tr>
-<td>7.280</td>
+<td>7.511</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
-<td>4</td>
-<td>display/n542_s1/F</td>
+<td>2</td>
+<td>line_draw/n98_s4/F</td>
 </tr>
 <tr>
-<td>7.760</td>
+<td>7.991</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n337_s3/I1</td>
+<td>line_draw/n480_s11/I1</td>
 </tr>
 <tr>
-<td>8.859</td>
+<td>9.090</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n337_s3/F</td>
+<td>line_draw/n480_s11/F</td>
 </tr>
 <tr>
-<td>9.339</td>
+<td>9.570</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_0_s1/D</td>
+<td>line_draw/line_draw_state_next_0_s2/D</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -506,7 +596,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -515,7 +605,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_0_s1/CLK</td>
+<td>line_draw/line_draw_state_next_0_s2/CLK</td>
 </tr>
 <tr>
 <td>9.184</td>
@@ -523,7 +613,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_0_s1</td>
+<td>line_draw/line_draw_state_next_0_s2</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -538,12 +628,12 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic Level:</td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 4.396, 60.598%; route: 2.400, 33.084%; tC2Q: 0.458, 6.318%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 4.627, 61.814%; route: 2.400, 32.063%; tC2Q: 0.458, 6.123%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 </table>
@@ -553,11 +643,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>-0.087</td>
+<td>0.169</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>9.272</td>
+<td>9.016</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
@@ -565,11 +655,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>display/rst_frame_buffer_count_4_s0</td>
+<td>line_draw/voltage_y0_0_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>display/rst_bram_complete_s0</td>
+<td>line_draw/line_draw_state_next_11_s1</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -603,7 +693,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -612,87 +702,167 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_4_s0/CLK</td>
+<td>line_draw/voltage_y0_0_s0/CLK</td>
 </tr>
 <tr>
 <td>2.543</td>
 <td>0.458</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>3</td>
-<td>display/rst_frame_buffer_count_4_s0/Q</td>
+<td>4</td>
+<td>line_draw/voltage_y0_0_s0/Q</td>
 </tr>
 <tr>
 <td>3.023</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s5/I1</td>
+<td>2</td>
+<td>line_draw/n45_s14/I1</td>
 </tr>
 <tr>
-<td>4.122</td>
+<td>4.068</td>
+<td>1.045</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s14/COUT</td>
+</tr>
+<tr>
+<td>4.068</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s15/CIN</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s15/COUT</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s16/CIN</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s16/COUT</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s17/CIN</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s17/COUT</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s18/CIN</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s18/COUT</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/CIN</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/COUT</td>
+</tr>
+<tr>
+<td>4.833</td>
+<td>0.480</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n448_s18/I1</td>
+</tr>
+<tr>
+<td>5.932</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s5/F</td>
+<td>line_draw/n448_s18/F</td>
 </tr>
 <tr>
-<td>4.602</td>
+<td>6.412</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/I1</td>
+<td>line_draw/n448_s17/I2</td>
 </tr>
 <tr>
-<td>5.701</td>
-<td>1.099</td>
+<td>7.234</td>
+<td>0.822</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/F</td>
+<td>line_draw/n448_s17/F</td>
 </tr>
 <tr>
-<td>6.181</td>
+<td>7.714</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s1/I1</td>
+<td>line_draw/n448_s19/I2</td>
 </tr>
 <tr>
-<td>7.280</td>
-<td>1.099</td>
-<td>tINS</td>
-<td>FF</td>
-<td>4</td>
-<td>display/n542_s1/F</td>
-</tr>
-<tr>
-<td>7.760</td>
-<td>0.480</td>
-<td>tNET</td>
-<td>FF</td>
-<td>1</td>
-<td>display/n388_s2/I0</td>
-</tr>
-<tr>
-<td>8.792</td>
-<td>1.032</td>
+<td>8.536</td>
+<td>0.822</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n388_s2/F</td>
+<td>line_draw/n448_s19/F</td>
 </tr>
 <tr>
-<td>9.272</td>
+<td>9.016</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/rst_bram_complete_s0/D</td>
+<td>line_draw/line_draw_state_next_11_s1/D</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -718,7 +888,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -727,7 +897,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_bram_complete_s0/CLK</td>
+<td>line_draw/line_draw_state_next_11_s1/CLK</td>
 </tr>
 <tr>
 <td>9.184</td>
@@ -735,7 +905,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>display/rst_bram_complete_s0</td>
+<td>line_draw/line_draw_state_next_11_s1</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -750,12 +920,12 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic Level:</td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 4.329, 60.231%; route: 2.400, 33.392%; tC2Q: 0.458, 6.377%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 4.073, 58.763%; route: 2.400, 34.625%; tC2Q: 0.458, 6.612%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 </table>
@@ -765,23 +935,23 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>-0.087</td>
+<td>0.385</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>9.272</td>
+<td>9.156</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
-<td>9.184</td>
+<td>9.541</td>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>display/rst_frame_buffer_count_4_s0</td>
+<td>line_draw/voltage_y0_0_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>display/rst_data_wren_s0</td>
+<td>line_draw/line_draw_state_next_10_s1</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -815,7 +985,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -824,87 +994,167 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_4_s0/CLK</td>
+<td>line_draw/voltage_y0_0_s0/CLK</td>
 </tr>
 <tr>
 <td>2.543</td>
 <td>0.458</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>3</td>
-<td>display/rst_frame_buffer_count_4_s0/Q</td>
+<td>4</td>
+<td>line_draw/voltage_y0_0_s0/Q</td>
 </tr>
 <tr>
 <td>3.023</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s5/I1</td>
+<td>2</td>
+<td>line_draw/n45_s14/I1</td>
 </tr>
 <tr>
-<td>4.122</td>
-<td>1.099</td>
+<td>4.068</td>
+<td>1.045</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s5/F</td>
+<td>line_draw/n45_s14/COUT</td>
 </tr>
 <tr>
-<td>4.602</td>
+<td>4.068</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s15/CIN</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s15/COUT</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s16/CIN</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s16/COUT</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s17/CIN</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s17/COUT</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s18/CIN</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s18/COUT</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/CIN</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/COUT</td>
+</tr>
+<tr>
+<td>4.833</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/I1</td>
+<td>line_draw/line_draw_state_next_12_s4/I1</td>
 </tr>
 <tr>
-<td>5.701</td>
+<td>5.932</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s2/F</td>
+<td>2</td>
+<td>line_draw/line_draw_state_next_12_s4/F</td>
 </tr>
 <tr>
-<td>6.181</td>
+<td>6.412</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s1/I1</td>
+<td>line_draw/line_draw_state_next_12_s3/I1</td>
 </tr>
 <tr>
-<td>7.280</td>
+<td>7.511</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
 <td>4</td>
-<td>display/n542_s1/F</td>
+<td>line_draw/line_draw_state_next_12_s3/F</td>
 </tr>
 <tr>
-<td>7.760</td>
+<td>7.991</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n321_s47/I0</td>
+<td>line_draw/line_draw_state_next_10_s4/I2</td>
 </tr>
 <tr>
-<td>8.792</td>
-<td>1.032</td>
+<td>8.793</td>
+<td>0.802</td>
 <td>tINS</td>
-<td>FF</td>
-<td>15</td>
-<td>display/n321_s47/F</td>
+<td>FR</td>
+<td>1</td>
+<td>line_draw/line_draw_state_next_10_s4/F</td>
 </tr>
 <tr>
-<td>9.272</td>
-<td>0.480</td>
+<td>9.156</td>
+<td>0.363</td>
 <td>tNET</td>
-<td>FF</td>
+<td>RR</td>
 <td>1</td>
-<td>display/rst_data_wren_s0/D</td>
+<td>line_draw/line_draw_state_next_10_s1/CE</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -930,7 +1180,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -939,15 +1189,15 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_data_wren_s0/CLK</td>
+<td>line_draw/line_draw_state_next_10_s1/CLK</td>
 </tr>
 <tr>
-<td>9.184</td>
-<td>-0.400</td>
+<td>9.541</td>
+<td>-0.043</td>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>display/rst_data_wren_s0</td>
+<td>line_draw/line_draw_state_next_10_s1</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -962,12 +1212,12 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic Level:</td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 4.329, 60.231%; route: 2.400, 33.392%; tC2Q: 0.458, 6.377%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 4.330, 61.233%; route: 2.283, 32.285%; tC2Q: 0.458, 6.482%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 </table>
@@ -977,11 +1227,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>0.392</td>
+<td>0.385</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>9.149</td>
+<td>9.156</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
@@ -989,11 +1239,11 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>display/rst_frame_buffer_count_4_s0</td>
+<td>line_draw/voltage_y0_0_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>display/rst_frame_buffer_count_1_s0</td>
+<td>line_draw/line_draw_state_next_11_s1</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -1027,7 +1277,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -1036,87 +1286,167 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_4_s0/CLK</td>
+<td>line_draw/voltage_y0_0_s0/CLK</td>
 </tr>
 <tr>
 <td>2.543</td>
 <td>0.458</td>
 <td>tC2Q</td>
 <td>RF</td>
-<td>3</td>
-<td>display/rst_frame_buffer_count_4_s0/Q</td>
+<td>4</td>
+<td>line_draw/voltage_y0_0_s0/Q</td>
 </tr>
 <tr>
 <td>3.023</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s5/I1</td>
+<td>2</td>
+<td>line_draw/n45_s14/I1</td>
 </tr>
 <tr>
-<td>4.122</td>
-<td>1.099</td>
+<td>4.068</td>
+<td>1.045</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s5/F</td>
+<td>line_draw/n45_s14/COUT</td>
 </tr>
 <tr>
-<td>4.602</td>
+<td>4.068</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s15/CIN</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s15/COUT</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s16/CIN</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s16/COUT</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s17/CIN</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s17/COUT</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s18/CIN</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n45_s18/COUT</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/CIN</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n45_s19/COUT</td>
+</tr>
+<tr>
+<td>4.833</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/I1</td>
+<td>line_draw/line_draw_state_next_12_s4/I1</td>
 </tr>
 <tr>
-<td>5.701</td>
+<td>5.932</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s2/F</td>
+<td>2</td>
+<td>line_draw/line_draw_state_next_12_s4/F</td>
 </tr>
 <tr>
-<td>6.181</td>
+<td>6.412</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s1/I1</td>
+<td>line_draw/line_draw_state_next_12_s3/I1</td>
 </tr>
 <tr>
-<td>7.280</td>
+<td>7.511</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
 <td>4</td>
-<td>display/n542_s1/F</td>
+<td>line_draw/line_draw_state_next_12_s3/F</td>
 </tr>
 <tr>
-<td>7.760</td>
+<td>7.991</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n321_s47/I0</td>
+<td>line_draw/line_draw_state_next_11_s4/I2</td>
 </tr>
 <tr>
-<td>8.786</td>
-<td>1.026</td>
+<td>8.793</td>
+<td>0.802</td>
 <td>tINS</td>
 <td>FR</td>
-<td>15</td>
-<td>display/n321_s47/F</td>
+<td>1</td>
+<td>line_draw/line_draw_state_next_11_s4/F</td>
 </tr>
 <tr>
-<td>9.149</td>
+<td>9.156</td>
 <td>0.363</td>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_1_s0/CE</td>
+<td>line_draw/line_draw_state_next_11_s1/CE</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -1142,7 +1472,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -1151,7 +1481,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_1_s0/CLK</td>
+<td>line_draw/line_draw_state_next_11_s1/CLK</td>
 </tr>
 <tr>
 <td>9.541</td>
@@ -1159,7 +1489,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_1_s0</td>
+<td>line_draw/line_draw_state_next_11_s1</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -1174,12 +1504,12 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic Level:</td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 4.323, 61.195%; route: 2.283, 32.317%; tC2Q: 0.458, 6.488%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 4.330, 61.233%; route: 2.283, 32.285%; tC2Q: 0.458, 6.482%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 </table>
@@ -1189,23 +1519,23 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <table class="summary_table">
 <tr>
 <td class="label">Slack</td>
-<td>0.392</td>
+<td>0.517</td>
 </tr>
 <tr>
 <td class="label">Data Arrival Time</td>
-<td>9.149</td>
+<td>8.668</td>
 </tr>
 <tr>
 <td class="label">Data Required Time</td>
-<td>9.541</td>
+<td>9.184</td>
 </tr>
 <tr>
 <td class="label">From</td>
-<td>display/rst_frame_buffer_count_4_s0</td>
+<td>line_draw/addr_y_value_unsigned_0_s0</td>
 </tr>
 <tr>
 <td class="label">To</td>
-<td>display/rst_frame_buffer_count_2_s0</td>
+<td>line_draw/addr_y_value_mult_14_s1</td>
 </tr>
 <tr>
 <td class="label">Launch Clk</td>
@@ -1239,7 +1569,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -1248,7 +1578,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_4_s0/CLK</td>
+<td>line_draw/addr_y_value_unsigned_0_s0/CLK</td>
 </tr>
 <tr>
 <td>2.543</td>
@@ -1256,79 +1586,191 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tC2Q</td>
 <td>RF</td>
 <td>3</td>
-<td>display/rst_frame_buffer_count_4_s0/Q</td>
+<td>line_draw/addr_y_value_unsigned_0_s0/Q</td>
 </tr>
 <tr>
 <td>3.023</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
-<td>1</td>
-<td>display/n542_s5/I1</td>
+<td>2</td>
+<td>line_draw/n120_s/I1</td>
 </tr>
 <tr>
-<td>4.122</td>
-<td>1.099</td>
+<td>4.068</td>
+<td>1.045</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s5/F</td>
+<td>line_draw/n120_s/COUT</td>
 </tr>
 <tr>
-<td>4.602</td>
+<td>4.068</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n119_s/CIN</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n119_s/COUT</td>
+</tr>
+<tr>
+<td>4.125</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n118_s/CIN</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n118_s/COUT</td>
+</tr>
+<tr>
+<td>4.182</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n117_s/CIN</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n117_s/COUT</td>
+</tr>
+<tr>
+<td>4.239</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n116_s/CIN</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n116_s/COUT</td>
+</tr>
+<tr>
+<td>4.296</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n115_s/CIN</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n115_s/COUT</td>
+</tr>
+<tr>
+<td>4.353</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n114_s/CIN</td>
+</tr>
+<tr>
+<td>4.410</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n114_s/COUT</td>
+</tr>
+<tr>
+<td>4.410</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n113_s/CIN</td>
+</tr>
+<tr>
+<td>4.467</td>
+<td>0.057</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n113_s/COUT</td>
+</tr>
+<tr>
+<td>4.467</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>line_draw/n112_s/CIN</td>
+</tr>
+<tr>
+<td>5.030</td>
+<td>0.563</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>line_draw/n112_s/SUM</td>
+</tr>
+<tr>
+<td>5.510</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/I1</td>
+<td>line_draw/n512_s11/I1</td>
 </tr>
 <tr>
-<td>5.701</td>
+<td>6.609</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s2/F</td>
+<td>line_draw/n512_s11/F</td>
 </tr>
 <tr>
-<td>6.181</td>
+<td>7.089</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n542_s1/I1</td>
+<td>line_draw/n512_s12/I1</td>
 </tr>
 <tr>
-<td>7.280</td>
+<td>8.188</td>
 <td>1.099</td>
 <td>tINS</td>
 <td>FF</td>
-<td>4</td>
-<td>display/n542_s1/F</td>
+<td>1</td>
+<td>line_draw/n512_s12/F</td>
 </tr>
 <tr>
-<td>7.760</td>
+<td>8.668</td>
 <td>0.480</td>
 <td>tNET</td>
 <td>FF</td>
 <td>1</td>
-<td>display/n321_s47/I0</td>
-</tr>
-<tr>
-<td>8.786</td>
-<td>1.026</td>
-<td>tINS</td>
-<td>FR</td>
-<td>15</td>
-<td>display/n321_s47/F</td>
-</tr>
-<tr>
-<td>9.149</td>
-<td>0.363</td>
-<td>tNET</td>
-<td>RR</td>
-<td>1</td>
-<td>display/rst_frame_buffer_count_2_s0/CE</td>
+<td>line_draw/addr_y_value_mult_14_s1/D</td>
 </tr>
 </table>
 <b>Data Required Path:</b>
@@ -1354,7 +1796,7 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>1.721</td>
 <td>tCL</td>
 <td>RR</td>
-<td>95</td>
+<td>258</td>
 <td>pll_clock/rpll_inst/CLKOUTD3</td>
 </tr>
 <tr>
@@ -1363,15 +1805,15 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 <td>tNET</td>
 <td>RR</td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_2_s0/CLK</td>
+<td>line_draw/addr_y_value_mult_14_s1/CLK</td>
 </tr>
 <tr>
-<td>9.541</td>
-<td>-0.043</td>
+<td>9.184</td>
+<td>-0.400</td>
 <td>tSu</td>
 <td> </td>
 <td>1</td>
-<td>display/rst_frame_buffer_count_2_s0</td>
+<td>line_draw/addr_y_value_mult_14_s1</td>
 </tr>
 </table>
 <b>Path Statistics:</b>
@@ -1386,12 +1828,12 @@ G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd<br>
 </tr>
 <tr>
 <td class="label">Logic Level:</td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr>
 <td class="label">Arrival Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 <tr>
-<td class="label">Arrival Data Path Delay:</td><td> cell: 4.323, 61.195%; route: 2.283, 32.317%; tC2Q: 0.458, 6.488%</td></tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 4.205, 63.873%; route: 1.920, 29.165%; tC2Q: 0.458, 6.962%</td></tr>
 <tr>
 <td class="label">Required Clock Path Delay:</td><td> cell: 0.000, 0.000%; route: 0.363, 100.000%</td></tr>
 </table>
