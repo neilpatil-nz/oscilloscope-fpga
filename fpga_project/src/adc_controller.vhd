@@ -35,7 +35,7 @@ signal waiting_state_count : unsigned(16 downto 0) := (others =>'0');
 constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 signal refresh_state_count : unsigned(31 downto 0) := (others =>'0');
-constant t_top_count : unsigned(31 downto 0)  := to_unsigned(100, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+constant t_top_count : unsigned(31 downto 0)  := to_unsigned(10000000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);
 signal adc_state : FSM_states := START_CONV;
@@ -163,7 +163,7 @@ begin
                         disp_state <= FINISHED;
                     end if;
                 when FINISHED =>
-                     if (refresh_state_count < t_top_count) then
+                     if (refresh_state_count /= t_top_count) then
                         refresh_state_count <= refresh_state_count + 1;
                     else
                         refresh_state_count <= (others => '0');

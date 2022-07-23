@@ -152,7 +152,7 @@ begin
     bram_rd_addr <= std_logic_vector(x_Pixel + y_Pixel) when sig_lcd_enable ='1' else (others =>'0');
    
     -- prevent accessing same address
-    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' AND frame_bram_wren ='0') else '0';
+    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' AND rst_data_wren = '0') else '0';
     
     -- reset bram 
     bram_rst <= '0';

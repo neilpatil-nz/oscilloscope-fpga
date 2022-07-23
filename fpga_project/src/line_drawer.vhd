@@ -32,18 +32,23 @@ signal addr_x_value : unsigned(7 downto 0) := (others => '0');
 signal addr_y_value : unsigned(6 downto 0) := (others =>'0');
 signal addr_y_sub_value : unsigned(6 downto 0) := (others =>'0');
 signal addr_y_add_value : unsigned(6 downto 0) := (others =>'0');
-signal addr_y_value_mult : unsigned(14 downto 0) := (others =>'0');
+signal addr_y_value_mult_sum : unsigned(14 downto 0) := (others =>'0');
+signal addr_y_value_mult_0 : unsigned(14 downto 0) := (others =>'0');
+signal addr_y_value_mult_1 : unsigned(14 downto 0) := (others =>'0');
+signal addr_y_value_mult_2 : unsigned(14 downto 0) := (others =>'0');
 signal addr_y_value_unsigned : unsigned(14 downto 0) := (others =>'0');
 
 constant ADC_ADDRESS_DEPTH : unsigned(7 downto 0) := to_unsigned(200,addr_x_count'length)-1;
 
 -- line draw controller state
-type FSM_states_line_draw is (IDLE, LOAD_X0, LOAD_Y0, LOAD_X1, LOAD_Y1, DETERMINE_DIRECTION, DRAW_STRAIGHT, DRAW_DOWN, DRAW_UP, MULT_DATA_0, MULT_DATA_1, MULT_DATA_2, MULT_DATA_3, ADD_DATA, WRITE_DATA, SET_Y_END, INCREMENT_Y, DECREMENT_Y, FINISHED);
+type FSM_states_line_draw is (IDLE, LOAD_X0, LOAD_Y0, LOAD_X1, LOAD_Y1, DETERMINE_DIRECTION, DRAW_STRAIGHT, DRAW_DOWN, DRAW_UP, UNSIGNED_DATA, MULT_DATA_0, MULT_DATA_1, MULT_DATA_2, ADD_DATA_0, ADD_DATA_1, ADD_DATA_2, ADD_DATA_3, WRITE_DATA, SET_Y_END, INCREMENT_Y, DECREMENT_Y, FINISHED);
 signal line_draw_state : FSM_states_line_draw := IDLE;
 signal line_draw_state_next : FSM_states_line_draw := IDLE;
 
 begin
     
+    addr_y_sub_value <= addr_y_value + "1111111";
+    addr_y_add_value <= addr_y_value + "0000001";
     process(clock)
     begin
         if (rising_edge(clock)) then
@@ -83,44 +88,49 @@ begin
                          line_draw_state_next <= DRAW_UP;
                      elsif (voltage_y0 < voltage_y1) then
                          line_draw_state_next <= DRAW_DOWN;
-                     elsif (voltage_y0 = voltage_y1) then
+                     else
                          line_draw_state_next <= DRAW_STRAIGHT;
                      end if;  
---                         line_draw_state_next <= DRAW_STRAIGHT;
-   
-                    line_draw_state <= MULT_DATA_0;
-                when MULT_DATA_0 =>
+                    line_draw_state <= UNSIGNED_DATA;
+                when UNSIGNED_DATA => 
                     addr_y_value_unsigned <= "00000000" & addr_y_value;
+                    line_draw_state <= MULT_DATA_0;
+                when MULT_DATA_0 => -- six stage pipeline process for y_value * 200
+                    addr_y_value_mult_0 <= shift_left(addr_y_value_unsigned, 7); -- y_value * 128
                     line_draw_state <= MULT_DATA_1;
                 when MULT_DATA_1 =>
-                    addr_y_value_mult <= shift_left(addr_y_value_unsigned, 7); -- y_value * 200
+                    addr_y_value_mult_1 <= shift_left(addr_y_value_unsigned, 6); -- y_value * 64
                     line_draw_state <= MULT_DATA_2;
                 when MULT_DATA_2 =>
-                    addr_y_value_mult <= addr_y_value_mult + shift_left(addr_y_value_unsigned, 6);
-                    line_draw_state <= MULT_DATA_3;
-                when MULT_DATA_3 =>
-                    addr_y_value_mult <= addr_y_value_mult + shift_left(addr_y_value_unsigned, 3);
-                    line_draw_state <= ADD_DATA;
-                when ADD_DATA =>
-                    addr_y_value_mult <= addr_y_value_mult + addr_x_value;
+                    addr_y_value_mult_2 <= shift_left(addr_y_value_unsigned, 3); -- y_value * 8
+                    line_draw_state <= ADD_DATA_0;
+                when ADD_DATA_0 => 
+                    addr_y_value_mult_sum <= addr_y_value_mult_0;
+                    line_draw_state <= ADD_DATA_1;
+                when ADD_DATA_1 =>
+                    addr_y_value_mult_sum <= addr_y_value_mult_sum + addr_y_value_mult_1;
+                    line_draw_state <= ADD_DATA_2;
+                when ADD_DATA_2 =>
+                    addr_y_value_mult_sum <= addr_y_value_mult_sum + addr_y_value_mult_2;
+                    line_draw_state <= ADD_DATA_3;
+                when ADD_DATA_3 =>
+                    addr_y_value_mult_sum <= addr_y_value_mult_sum + addr_x_value;
                     line_draw_state <= WRITE_DATA;
                 when WRITE_DATA => 
-                    frame_bram_addr <= std_logic_vector(addr_y_value_mult);
+                    frame_bram_addr <= std_logic_vector(addr_y_value_mult_sum);
                     frame_bram_wren <= '1';
                     frame_bram_out  <= '1';
                     line_draw_state <= line_draw_state_next;
                 when DRAW_STRAIGHT =>
                     addr_x_value <= time_x1;
                     addr_y_value <= voltage_y1;
-                    line_draw_state <= MULT_DATA_0;
+                    line_draw_state <= UNSIGNED_DATA;
                     line_draw_state_next <= FINISHED;
                 when DRAW_DOWN =>
                     if (addr_y_value /= voltage_y1) then
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_DOWN;
                         line_draw_state <= INCREMENT_Y;
-                            
-addr_y_add_value <= addr_y_value + "0000001";
                     else
                         addr_x_value <= time_x1;
                         line_draw_state_next <= FINISHED;
@@ -131,7 +141,7 @@ addr_y_add_value <= addr_y_value + "0000001";
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_UP;
                         line_draw_state <= DECREMENT_Y;
-addr_y_sub_value <= addr_y_value + "1111111";
+
                     else
                         addr_x_value <= time_x1;
                         line_draw_state_next <= FINISHED;
@@ -139,13 +149,13 @@ addr_y_sub_value <= addr_y_value + "1111111";
                     end if;
                 when SET_Y_END =>
                     addr_y_value <= voltage_y1;
-                    line_draw_state <= MULT_DATA_0;
+                    line_draw_state <= UNSIGNED_DATA;
                 when INCREMENT_Y =>
                     addr_y_value <= addr_y_add_value;
-                    line_draw_state <= MULT_DATA_0;
+                    line_draw_state <= UNSIGNED_DATA;
                 when DECREMENT_Y =>
                     addr_y_value <= addr_y_sub_value;
-                    line_draw_state <= MULT_DATA_0;
+                    line_draw_state <= UNSIGNED_DATA;
                 when FINISHED =>
                     if (addr_x_count < ADC_ADDRESS_DEPTH-1) then
                         addr_x_count <= addr_x_count + 2;
