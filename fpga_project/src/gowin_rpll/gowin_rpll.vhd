@@ -4,7 +4,7 @@
 --GOWIN Version: V1.9.8.05
 --Part Number: GW1N-LV1QN48C6/I5
 --Device: GW1N-1
---Created Time: Thu Jun 30 16:59:38 2022
+--Created Time: Sun Jul 24 09:02:59 2022
 
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -90,9 +90,9 @@ begin
             FCLKIN => "24",
             DEVICE => "GW1N-1",
             DYN_IDIV_SEL => "false",
-            IDIV_SEL => 2,
+            IDIV_SEL => 1,
             DYN_FBDIV_SEL => "false",
-            FBDIV_SEL => 49,
+            FBDIV_SEL => 36,
             DYN_ODIV_SEL => "false",
             ODIV_SEL => 2,
             PSDA_SEL => "0000",
@@ -106,7 +106,7 @@ begin
             CLKOUT_BYPASS => "false",
             CLKOUTP_BYPASS => "false",
             CLKOUTD_BYPASS => "false",
-            DYN_SDIV_SEL => 12,
+            DYN_SDIV_SEL => 10,
             CLKOUTD_SRC => "CLKOUT",
             CLKOUTD3_SRC => "CLKOUT"
         )

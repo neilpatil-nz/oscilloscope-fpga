@@ -28,6 +28,7 @@ signal voltage_y0 : unsigned(6 downto 0) := (others =>'0');
 signal voltage_y1 : unsigned(6 downto 0) := (others =>'0');
 
 signal addr_x_count : unsigned(7 downto 0) := (others => '0');
+--signal addr_x_count : unsigned(7 downto 0) := "00000010";
 signal addr_x_value : unsigned(7 downto 0) := (others => '0');
 signal addr_y_value : unsigned(6 downto 0) := (others =>'0');
 signal addr_y_sub_value : unsigned(6 downto 0) := (others =>'0');
@@ -69,8 +70,10 @@ begin
                     adc_data_wren <= '1';
                 when LOAD_Y0 =>
                     line_draw_state <= LOAD_X1;
+                    adc_data_wren <= '1';
+ 
                     voltage_y0 <= unsigned(adc_data_in);
---                    voltage_y0 <= to_unsigned(0,voltage_y0'length);
+--                    voltage_y0 <= to_unsigned(10,voltage_y0'length);
                 when LOAD_X1 =>
                     adc_data_addr <= std_logic_vector(time_x0 + 1);
                     time_x1 <= time_x0 + 1;
@@ -91,6 +94,7 @@ begin
                      else
                          line_draw_state_next <= DRAW_STRAIGHT;
                      end if;  
+
                     line_draw_state <= UNSIGNED_DATA;
                 when UNSIGNED_DATA => 
                     addr_y_value_unsigned <= "00000000" & addr_y_value;
@@ -162,6 +166,7 @@ begin
                         line_draw_state <= LOAD_X0;
                     else 
                         addr_x_count <= (others => '0');
+--                        addr_x_count <= "00000010";
                         line_draw_state <= IDLE;
                         finished_drawing <= '1';
                     end if;

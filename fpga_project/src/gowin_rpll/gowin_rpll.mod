@@ -12,12 +12,12 @@
 -file_type vhdl
 -dev_type GW1N-1
 -dyn_idiv_sel false
--idiv_sel 3
+-idiv_sel 2
 -dyn_fbdiv_sel false
--fbdiv_sel 50
+-fbdiv_sel 37
 -dyn_odiv_sel false
 -odiv_sel 2
--dyn_sdiv_sel 12
+-dyn_sdiv_sel 10
 -dyn_da_en true
 -rst_sig false
 -rst_sig_p false

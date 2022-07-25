@@ -41,7 +41,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
-      "InstLine" : 163,
+      "InstLine" : 161,
       "InstName" : "dual_port_ram",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
       "ModuleLine" : 12,
@@ -59,7 +59,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
-      "InstLine" : 178,
+      "InstLine" : 179,
       "InstName" : "adc_data_buffer",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
       "ModuleLine" : 12,

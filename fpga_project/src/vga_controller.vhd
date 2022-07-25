@@ -98,17 +98,15 @@ begin
     process(pixel_clock)
     begin
         if (rising_edge(pixel_clock)) then
---            if (frame_bram_wren ='0') then
-                if( x_Count = HS_Pixel) then
-                    x_Count <= 0;
-                    y_Count <= y_Count + 1;
-                elsif( y_Count = VS_Line) then
-                    x_Count <= 0;
-                    y_Count <= 0;
-                else 
-                    x_Count <= x_Count + 1;
-                end if;
---            end if;
+            if( x_Count = HS_Pixel) then
+                x_Count <= 0;
+                y_Count <= y_Count + 1;
+            elsif( y_Count = VS_Line) then
+                x_Count <= 0;
+                y_Count <= 0;
+            else 
+                x_Count <= x_Count + 1;
+            end if;
         end if;
     end process;
     
@@ -146,13 +144,13 @@ begin
     bram_din(0) <= rst_data_out when rst_data_wren = '1' else frame_bram_din;
     bram_wr_addr <= rst_data_addr when rst_data_wren = '1' else frame_bram_addr;
     bram_wr_clk_en <= frame_bram_wren or rst_data_wren;
-    bram_wr_clk_sel <= "0010" when rst_data_wren = '1' else "0001";
+--    bram_wr_clk_sel <= "0010" when rst_data_wren = '1' else "0001";
 
     -- bram signals (qout)
     bram_rd_addr <= std_logic_vector(x_Pixel + y_Pixel) when sig_lcd_enable ='1' else (others =>'0');
    
     -- prevent accessing same address
-    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1' AND rst_data_wren = '0') else '0';
+    bram_rd_clk_en <= '1' when (sig_lcd_enable ='1') else '0';
     
     -- reset bram 
     bram_rst <= '0';

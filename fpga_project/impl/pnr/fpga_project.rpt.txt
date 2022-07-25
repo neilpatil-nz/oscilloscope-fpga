@@ -11,26 +11,26 @@
   <PnR Version>: V1.9.8.05
   <Part Number>: GW1N-LV1QN48C6/I5
   <Device>: GW1N-1
-  <Created Time>:Sun Jul 24 08:49:49 2022
+  <Created Time>:Sun Jul 24 18:19:02 2022
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.048s, Elapsed time = 0h 0m 0.048s
+    Placement Phase 0: CPU time = 0h 0m 0.047s, Elapsed time = 0h 0m 0.047s
     Placement Phase 1: CPU time = 0h 0m 0.024s, Elapsed time = 0h 0m 0.024s
-    Placement Phase 2: CPU time = 0h 0m 0.063s, Elapsed time = 0h 0m 0.064s
+    Placement Phase 2: CPU time = 0h 0m 0.059s, Elapsed time = 0h 0m 0.059s
     Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
     Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Routing Phase 1: CPU time = 0h 0m 0.018s, Elapsed time = 0h 0m 0.018s
-    Routing Phase 2: CPU time = 0h 0m 0.262s, Elapsed time = 0h 0m 0.262s
-    Total Routing: CPU time = 0h 0m 0.28s, Elapsed time = 0h 0m 0.28s
+    Routing Phase 0: CPU time = 0h 0m 0.001s, Elapsed time = 0h 0m 0s
+    Routing Phase 1: CPU time = 0h 0m 0.019s, Elapsed time = 0h 0m 0.019s
+    Routing Phase 2: CPU time = 0h 0m 0.31s, Elapsed time = 0h 0m 0.31s
+    Total Routing: CPU time = 0h 0m 0.33s, Elapsed time = 0h 0m 0.329s
  Generate output files:
-    CPU time = 0h 0m 0.426s, Elapsed time = 0h 0m 0.426s
+    CPU time = 0h 0m 0.431s, Elapsed time = 0h 0m 0.431s
 
- Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 183MB
+ Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 86MB
 
 
 3. Resource Usage Summary
@@ -38,15 +38,15 @@
   ----------------------------------------------------------
   Resources                   | Usage
   ----------------------------------------------------------
-  Logic                       | 550/1152  47%
-    --LUT,ALU,ROM16           | 550(357 LUT, 193 ALU, 0 ROM16)
+  Logic                       | 548/1152  47%
+    --LUT,ALU,ROM16           | 548(355 LUT, 193 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
   Register                    | 322/945  34%
     --Logic Register as Latch | 0/864  0%
     --Logic Register as FF    | 321/864  37%
     --I/O Register as Latch   | 0/81  0%
     --I/O Register as FF      | 1/81  1%
-  CLS                         | 371/576  64%
+  CLS                         | 372/576  64%
   I/O Port                    | 31
   I/O Buf                     | 31
     --Input Buf               | 10
@@ -114,7 +114,7 @@ ADC_DATA[1]  |           | 24/2      | Y          | in    | IOB16[B] | LVCMOS18 
 ADC_DATA[2]  |           | 22/2      | Y          | in    | IOB14[B] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
 ADC_DATA[3]  |           | 21/2      | Y          | in    | IOB14[A] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
 ADC_DATA[4]  |           | 20/2      | Y          | in    | IOB11[B] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
-ADC_DATA[5]  |           | 18/2      | Y          | in    | IOB10[B] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
+ADC_DATA[5]  |           | 13/2      | Y          | in    | IOB3[A]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
 ADC_DATA[6]  |           | 17/2      | Y          | in    | IOB10[A] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
 ADC_DATA[7]  |           | 16/2      | Y          | in    | IOB7[A]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
 ADC_INT      |           | 15/2      | Y          | in    | IOB6[B]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5       
@@ -161,12 +161,12 @@ Loc./Bank| Signal       | Dir.  | Site     | IO Type  | Drive | Pull Mode | PCI 
 39/0     | LCD_G[4]     | out   | IOT17[A] | LVCMOS33 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 3.3  
 38/0     | LCD_G[3]     | out   | IOT17[B] | LVCMOS33 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 3.3  
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-13/2     | -            | in    | IOB3[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
+13/2     | ADC_DATA[5]  | in    | IOB3[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 14/2     | ADC_RD       | out   | IOB3[B]  | LVCMOS25 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 2.5  
 15/2     | ADC_INT      | in    | IOB6[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 16/2     | ADC_DATA[7]  | in    | IOB7[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 17/2     | ADC_DATA[6]  | in    | IOB10[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
-18/2     | ADC_DATA[5]  | in    | IOB10[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
+18/2     | -            | in    | IOB10[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 19/2     | ADC_DATA[0]  | in    | IOB11[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 20/2     | ADC_DATA[4]  | in    | IOB11[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
 21/2     | ADC_DATA[3]  | in    | IOB14[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 2.5  
