@@ -10,6 +10,8 @@ generic (
 );
 port(
     clock           : in std_logic;
+    
+    -- flash adc control signals
     adc_data_in     : in std_logic_vector(7 downto 0);
     adc_rd          : out std_logic;
     adc_int         : in std_logic;
@@ -27,52 +29,51 @@ port(
 end entity;
 
 architecture rtl of adc_controller is
+-- adc data bram constants
 constant ADDRESS_WIDTH : integer := 8;
 constant DATA_WIDTH    : integer := 7;
 
--- waiting state counter
+-- sampling frequency ~= (t_new_conv + 4 clock cycles)/(1/clk_freq)
+-- waiting state counter 
 signal waiting_state_count : unsigned(16 downto 0) := (others =>'0');
-constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state_count'length);
 
+-- time interval between refreshing the display and starting a new conversion 
 signal refresh_state_count : unsigned(31 downto 0) := (others =>'0');
 --constant t_top_count : unsigned(31 downto 0)  := to_unsigned(80000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 constant t_top_count : unsigned(31 downto 0)  := to_unsigned(30000000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
+-- adc controller state
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);
 signal adc_state : FSM_states := START_CONV;
 
+-- display controller state 
 type DISP_states is (IDLE, RESET, DRAW, FINISHED);
 signal disp_state : DISP_states := IDLE;
 
+-- handshaking signals between adc controller and disp controller processes
 signal start_disp_draw : std_logic := '0';
 signal finished_disp_draw : std_logic := '0';
 
 -- addr counter 
 signal adc_mem_addr_count : unsigned(7 downto 0) := (others => '0');
 
--- adc data signals
-signal adc_data_latch : std_logic_vector(7 downto 0):= (others =>'0');
-signal adc_data_unsigned : unsigned(15 downto 0):= (others =>'0');
-signal adc_data_mult: unsigned(15 downto 0):= (others =>'0');
-signal adc_data_processed : unsigned(6 downto 0):= (others =>'0');
-
-constant sig_pixel_height : unsigned(7 downto 0) := to_unsigned(PIXELS_HEIGHT, 8);
-constant sig_pixel_width : unsigned(7 downto 0) := to_unsigned(200, 8);
-
--- bram dout signals
+-- adc data bram dout signals
 signal adc_bram_qout    : std_logic_vector(6 downto 0) := (others =>'0'); 
 signal adc_bram_rd_clk_en : std_logic := '0';
 signal adc_bram_rd_addr : std_logic_vector(ADDRESS_WIDTH - 1 downto 0) := (others =>'0');
 
--- bram din signals
+-- adc data bram din signals
 signal adc_bram_din     : std_logic_vector(6 downto 0) := (others =>'0'); 
 signal adc_bram_wr_clk_en : std_logic := '0';
 signal adc_bram_wr_addr : std_logic_vector(ADDRESS_WIDTH - 1 downto 0) :=  (others =>'0'); 
 
+-- bram reset signal (set low)
 signal adc_bram_rst : std_logic := '0';
 
 -- adc interrupt
 signal adc_interrupt : std_logic := '0';
+
 begin
     adc_data_out <= adc_bram_qout;
     adc_bram_rd_clk_en <= adc_data_rden;
@@ -104,22 +105,25 @@ begin
                     adc_rd <= '0';
                     adc_state <= POLL_CONV;
                 when POLL_CONV =>
-                    if (adc_interrupt = '1')then
+                    if (adc_interrupt = '1') then 
                         ADC_state <= FINISHED_CONV;
                     else
                         adc_rd <= '0';
                     end if;
                 when FINISHED_CONV =>
                     if (adc_mem_addr_count < sig_pixel_width-1) then
+                        -- ((~ adc_data)*120)/256
+                        -- adc data out is active low (e.g. 5V = 00000000)
                         adc_conversion_temp := resize(shift_right((unsigned(not adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
-                        adc_bram_din <= std_logic_vector(adc_conversion_temp) ; -- divide by 256, 2^8 
+                        adc_bram_din <= std_logic_vector(adc_conversion_temp) ; 
                         adc_bram_wr_addr <= std_logic_vector(adc_mem_addr_count);
                        -- write a white pixel
-                        adc_bram_wr_clk_en  <= '1'; -- 1 indicates ` white
+                        adc_bram_wr_clk_en  <= '1'; 
+                        -- imcrement counter (x_axis)
                         adc_mem_addr_count <= adc_mem_addr_count + 1;
                         ADC_state <= WAITING;
                     else
-                        ADC_state <= RESET_DISP; -- reset frame buffer 
+                        ADC_state <= RESET_DISP; -- reset frame buffer and draw lines
                     end if;
                 when RESET_DISP => 
                     if (finished_disp_draw = '0') then
@@ -152,10 +156,10 @@ begin
                         disp_state <= RESET;
                     end if;
                 when RESET =>
-                    if (rst_bram_complete = '0') then
+                    if (rst_bram_complete = '0') then 
                         rst_bram_start <= '1';
                     else
-                        disp_state <= DRAW;
+                        disp_state <= DRAW; 
                     end if;
                 when DRAW =>
                     if (finished_drawing = '0') then
