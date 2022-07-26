@@ -1,3 +1,6 @@
+-- Oscilloscope FPGA Project
+-- Name: Neil Patil
+-- Date: 2022
 library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
@@ -75,7 +78,6 @@ begin
         rst_bram_start => rst_bram_start, 
         rst_bram_complete => rst_bram_complete
     );
-   
 
     -- adc component 
     adc : entity work.adc_controller
@@ -120,6 +122,4 @@ begin
         frame_bram_wren  => frame_bram_wren,
         frame_bram_addr  => frame_bram_addr
     );
---    
-
 end architecture;

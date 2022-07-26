@@ -4,8 +4,8 @@
     <SubModule name="display" Register="55" Alu="38" Lut="147">
         <SubModule name="dual_port_ram" Register="1" Lut="1" Bsram="2"/>
     </SubModule>
-    <SubModule name="adc" Register="83" Alu="71" Lut="69">
+    <SubModule name="adc" Register="83" Alu="71" Lut="67">
         <SubModule name="adc_data_buffer" Bsram="1"/>
     </SubModule>
-    <SubModule name="line_draw" Register="137" Alu="79" Lut="124"/>
+    <SubModule name="line_draw" Register="149" Alu="61" Lut="172"/>
 </Module>
