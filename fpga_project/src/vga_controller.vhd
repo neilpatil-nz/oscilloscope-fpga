@@ -165,7 +165,8 @@ begin
    
     -- prevent accessing same address
     bram_rd_clk_en <= '1' when (sig_lcd_enable ='1') else '0';
-    
+    bram_wr_clk <= clock;
+
     -- reset bram 
     bram_rst <= '0';
     

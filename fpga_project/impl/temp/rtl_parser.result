@@ -17,15 +17,15 @@
  },
  {
   "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-  "InstLine" : 5,
+  "InstLine" : 8,
   "InstName" : "top_level",
   "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-  "ModuleLine" : 5,
+  "ModuleLine" : 8,
   "ModuleName" : "top_level",
   "SubInsts" : [
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 48,
+    "InstLine" : 51,
     "InstName" : "pll_clock",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
     "ModuleLine" : 12,
@@ -33,7 +33,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 59,
+    "InstLine" : 62,
     "InstName" : "display",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
     "ModuleLine" : 5,
@@ -41,7 +41,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
-      "InstLine" : 161,
+      "InstLine" : 174,
       "InstName" : "dual_port_ram",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
       "ModuleLine" : 12,
@@ -51,7 +51,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 81,
+    "InstLine" : 83,
     "InstName" : "adc",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
     "ModuleLine" : 6,
@@ -59,7 +59,7 @@
     "SubInsts" : [
      {
       "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
-      "InstLine" : 179,
+      "InstLine" : 184,
       "InstName" : "adc_data_buffer",
       "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
       "ModuleLine" : 12,
@@ -69,7 +69,7 @@
    },
    {
     "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 107,
+    "InstLine" : 109,
     "InstName" : "line_draw",
     "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/line_drawer.vhd",
     "ModuleLine" : 6,

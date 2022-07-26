@@ -149,7 +149,6 @@ begin
                         addr_x_value <= time_x1;
                         line_draw_state_next <= DRAW_UP;
                         line_draw_state <= DECREMENT_Y;
-
                     else
                         addr_x_value <= time_x1;
                         line_draw_state_next <= FINISHED;
@@ -166,8 +165,10 @@ begin
                     line_draw_state <= UNSIGNED_DATA;
                 when FINISHED =>
                     if (addr_x_count < ADC_ADDRESS_DEPTH-1) then
-                        addr_x_count <= addr_x_count + 2; -- increments in two
-                        line_draw_state <= LOAD_X0;
+                        addr_x_count <= addr_x_count + 1; -- increments in two
+                        line_draw_state <= LOAD_X1;
+                        time_x0 <= time_x1;
+                        voltage_y0 <= voltage_y1;
                     else 
                         addr_x_count <= (others => '0');
 --                        addr_x_count <= "00000010";
