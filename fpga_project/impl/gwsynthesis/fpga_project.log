@@ -26,7 +26,7 @@ Analyzing entity 'vga_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\vga
 Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":31)
 Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd'
 Analyzing entity 'top_level'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":28)
+Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":32)
 Processing 'top_level(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
 Processing 'Gowin_rPLL(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
 Processing 'vga_controller(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
@@ -36,6 +36,8 @@ Processing 'dual_adc_bram(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\sr
 Processing 'line_drawer(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":6)
 NOTE  (EX0101) : Current top module is "top_level"
 [5%] Running netlist conversion ...
+WARN  (CV0016) : Input TEST0 is unused("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":26)
+WARN  (CV0016) : Input TEST2 is unused("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":28)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed

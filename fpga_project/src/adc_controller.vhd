@@ -115,7 +115,7 @@ begin
                     if (adc_mem_addr_count < sig_pixel_width-1) then
                         -- ((~ adc_data)*120)/256
                         -- adc data out is active low (e.g. 5V = 00000000)
-                        adc_conversion_temp := resize(shift_right((unsigned(not adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
+                        adc_conversion_temp := resize(shift_right((unsigned(adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
                         adc_bram_din <= std_logic_vector(adc_conversion_temp) ; 
                         adc_bram_wr_addr <= std_logic_vector(adc_mem_addr_count);
                        -- write a white pixel

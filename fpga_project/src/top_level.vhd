@@ -21,7 +21,11 @@ entity top_level is
     -- flash adc signals
     ADC_DATA      : in std_logic_vector(7 downto 0);
     ADC_RD        : out std_logic;
-    ADC_INT       : in std_logic
+    ADC_INT       : in std_logic;
+
+    TEST0 : in std_logic;
+    TEST1 : in std_logic;
+    TEST2 : in std_logic
 );
 end entity;
 
@@ -44,6 +48,8 @@ signal frame_bram_wren : std_logic := '0';
 signal frame_bram_addr : std_logic_vector(14 downto 0) := (others =>'0');
 signal frame_bram_rst : std_logic := '0';
 
+signal adctest : std_logic_vector(7 downto 0):= (others =>'0');
+
 -- frame buffer reset handshaking signals
 signal rst_bram_start : std_logic := '0';
 signal rst_bram_complete  : std_logic := '0';
@@ -57,7 +63,6 @@ begin
     );   
     
     LCD_CLOCK <= disp_clock;
-    
     -- display component 
     display : entity work.vga_controller
     port map(
@@ -78,7 +83,7 @@ begin
         rst_bram_start => rst_bram_start, 
         rst_bram_complete => rst_bram_complete
     );
-
+    adctest <= ADC_DATA when TEST1 ='1' else "00000000";
     -- adc component 
     adc : entity work.adc_controller
     generic map(
@@ -89,7 +94,7 @@ begin
         clock => sys_clock,
 
         -- flash to adc controller signals
-        adc_data_in => ADC_DATA,
+        adc_data_in => adctest,
         adc_rd => ADC_RD,
         adc_int => ADC_INT,
 
@@ -104,6 +109,7 @@ begin
         rst_bram_start => rst_bram_start, 
         rst_bram_complete => rst_bram_complete
     );
+    
 
     -- line draw controller component 
     line_draw : entity work.line_drawer
