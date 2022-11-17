@@ -1,43 +1,43 @@
 GowinSynthesis start
 Running parser ...
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd'
-Analyzing entity 'dual_adc_bram'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":12)
-Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":28)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd'
-Analyzing entity 'adc_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":31)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd'
-Analyzing entity 'clock_sel'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd":12)
-Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd":23)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd'
-Analyzing entity 'gowin_osc'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":12)
-Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":18)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd'
-Analyzing entity 'gowin_rpll'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
-Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":21)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd'
-Analyzing entity 'dual_bram'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":12)
-Analyzing architecture 'behavioral'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":28)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd'
-Analyzing entity 'line_drawer'("G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":6)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":23)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd'
-Analyzing entity 'vga_controller'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":31)
-Analyzing VHDL file 'G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd'
-Analyzing entity 'top_level'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
-Analyzing architecture 'rtl'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":32)
-Processing 'top_level(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
-Processing 'Gowin_rPLL(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
-Processing 'vga_controller(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
-Processing 'dual_bram(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":12)
-Processing 'adc_controller(pixels_height=120,pixels_width=200)(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
-Processing 'dual_adc_bram(Behavioral)'("G:\Git\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":12)
-Processing 'line_drawer(rtl)'("G:\Git\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":6)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd'
+Analyzing entity 'dual_adc_bram'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":12)
+Analyzing architecture 'behavioral'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":28)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\adc_controller.vhd'
+Analyzing entity 'adc_controller'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
+Analyzing architecture 'rtl'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":31)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd'
+Analyzing entity 'clock_sel'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd":12)
+Analyzing architecture 'behavioral'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_dcs\clock_sel.vhd":23)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd'
+Analyzing entity 'gowin_osc'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":12)
+Analyzing architecture 'behavioral'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_osc\gowin_osc.vhd":18)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd'
+Analyzing entity 'gowin_rpll'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
+Analyzing architecture 'behavioral'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":21)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd'
+Analyzing entity 'dual_bram'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":12)
+Analyzing architecture 'behavioral'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":28)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\line_drawer.vhd'
+Analyzing entity 'line_drawer'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":6)
+Analyzing architecture 'rtl'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":23)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\vga_controller.vhd'
+Analyzing entity 'vga_controller'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
+Analyzing architecture 'rtl'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":31)
+Analyzing VHDL file 'C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd'
+Analyzing entity 'top_level'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
+Analyzing architecture 'rtl'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd":32)
+Processing 'top_level(rtl)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd":8)
+Processing 'Gowin_rPLL(Behavioral)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_rpll\gowin_rpll.vhd":12)
+Processing 'vga_controller(rtl)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\vga_controller.vhd":5)
+Processing 'dual_bram(Behavioral)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\gowin_sdpb\dual_bram.vhd":12)
+Processing 'adc_controller(pixels_height=120,pixels_width=200)(rtl)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\adc_controller.vhd":6)
+Processing 'dual_adc_bram(Behavioral)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\dual_adc_bram\dual_adc_bram.vhd":12)
+Processing 'line_drawer(rtl)'("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\line_drawer.vhd":6)
 NOTE  (EX0101) : Current top module is "top_level"
 [5%] Running netlist conversion ...
-WARN  (CV0016) : Input TEST0 is unused("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":26)
-WARN  (CV0016) : Input TEST2 is unused("G:\Git\oscilloscope-fpga\fpga_project\src\top_level.vhd":28)
+WARN  (CV0016) : Input TEST0 is unused("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd":26)
+WARN  (CV0016) : Input TEST2 is unused("C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\src\top_level.vhd":28)
 Running device independent optimization ...
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
@@ -53,6 +53,6 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-[95%] Generate netlist file "G:\Git\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project.vg" completed
-[100%] Generate report file "G:\Git\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project_syn.rpt.html" completed
+[95%] Generate netlist file "C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project.vg" completed
+[100%] Generate report file "C:\Users\npat6\OneDrive\Desktop\oscope_test\oscilloscope-fpga\fpga_project\impl\gwsynthesis\fpga_project_syn.rpt.html" completed
 GowinSynthesis finish
