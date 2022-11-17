@@ -139,7 +139,7 @@ begin
     y_Pixel <=  to_unsigned((to_integer(unsigned(shift_right(to_unsigned(y_Count, y_Pixel'length), 2))) * x_Width_Buffer),  y_Pixel'length);
         
     grid_line_y_en <= '1' when y_Count >= 60 and y_Count < 62 else -- 5V
-                    '1' when y_Count >= 120 and y_Count < 122 else -- 4.375V
+                    '1' when y_Count >= 120 and y_Count < 123 else -- 4.375V
                     '1' when y_Count >= 180 and y_Count < 182 else -- 3.75V
                     '1' when y_Count >= 240 and y_Count < 242 else -- 3.125V
                     '1' when y_Count >= 300 and y_Count < 302 else -- 2.5V
