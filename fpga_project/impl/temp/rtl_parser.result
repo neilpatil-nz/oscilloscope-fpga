@@ -1,77 +1,77 @@
 [
  {
-  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
+  "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
   "InstLine" : 12,
   "InstName" : "clock_sel",
-  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
+  "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_dcs/clock_sel.vhd",
   "ModuleLine" : 12,
   "ModuleName" : "clock_sel"
  },
  {
-  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
+  "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
   "InstLine" : 12,
   "InstName" : "Gowin_OSC",
-  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
+  "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_osc/gowin_osc.vhd",
   "ModuleLine" : 12,
   "ModuleName" : "Gowin_OSC"
  },
  {
-  "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+  "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
   "InstLine" : 8,
   "InstName" : "top_level",
-  "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+  "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
   "ModuleLine" : 8,
   "ModuleName" : "top_level",
   "SubInsts" : [
    {
-    "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 51,
+    "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+    "InstLine" : 57,
     "InstName" : "pll_clock",
-    "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
+    "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_rpll/gowin_rpll.vhd",
     "ModuleLine" : 12,
     "ModuleName" : "Gowin_rPLL"
    },
    {
-    "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 62,
+    "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+    "InstLine" : 67,
     "InstName" : "display",
-    "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
+    "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
     "ModuleLine" : 5,
     "ModuleName" : "vga_controller",
     "SubInsts" : [
      {
-      "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
+      "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/vga_controller.vhd",
       "InstLine" : 174,
       "InstName" : "dual_port_ram",
-      "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
+      "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/gowin_sdpb/dual_bram.vhd",
       "ModuleLine" : 12,
       "ModuleName" : "dual_bram"
      }
     ]
    },
    {
-    "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 83,
+    "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+    "InstLine" : 88,
     "InstName" : "adc",
-    "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
+    "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
     "ModuleLine" : 6,
     "ModuleName" : "adc_controller",
     "SubInsts" : [
      {
-      "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
-      "InstLine" : 184,
+      "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/adc_controller.vhd",
+      "InstLine" : 186,
       "InstName" : "adc_data_buffer",
-      "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
+      "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/dual_adc_bram/dual_adc_bram.vhd",
       "ModuleLine" : 12,
       "ModuleName" : "dual_adc_bram"
      }
     ]
    },
    {
-    "InstFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/top_level.vhd",
-    "InstLine" : 109,
+    "InstFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/top_level.vhd",
+    "InstLine" : 115,
     "InstName" : "line_draw",
-    "ModuleFile" : "G:/Git/oscilloscope-fpga/fpga_project/src/line_drawer.vhd",
+    "ModuleFile" : "C:/Users/npat6/OneDrive/Desktop/oscope_test/oscilloscope-fpga/fpga_project/src/line_drawer.vhd",
     "ModuleLine" : 6,
     "ModuleName" : "line_drawer"
    }

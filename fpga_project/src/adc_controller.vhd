@@ -41,7 +41,7 @@ constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state
 -- time interval between refreshing the display and starting a new conversion 
 signal refresh_state_count : unsigned(31 downto 0) := (others =>'0');
 --constant t_top_count : unsigned(31 downto 0)  := to_unsigned(80000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
-constant t_top_count : unsigned(31 downto 0)  := to_unsigned(50000000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+constant t_top_count : unsigned(31 downto 0)  := to_unsigned(3900000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 -- adc controller state
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);
@@ -89,6 +89,7 @@ begin
             adc_interrupt <= '0';
         end if;
     end process;
+    start_disp_draw <= '1';
 
     -- adc controller
     process(clock)
@@ -99,7 +100,7 @@ begin
             adc_bram_din <=  (others =>'0');
             adc_bram_wr_clk_en <= '0';
             frame_bram_rst <= '0';
-            start_disp_draw <= '0';
+--            start_disp_draw <= '0';
 
             case(adc_state) is 
                 when START_CONV =>
@@ -115,7 +116,8 @@ begin
                     if (adc_mem_addr_count < sig_pixel_width-1) then
                         -- ((~ adc_data)*120)/256
                         -- adc data out is active low (e.g. 5V = 00000000)
-                        adc_conversion_temp := resize(shift_right((unsigned(not adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
+                        adc_conversion_temp := resize(shift_right((unsigned(adc_data_in) * to_unsigned(PIXELS_HEIGHT, 7)), 8), 7); -- (adc value * total height)/divide by 2^8
+--                        adc_conversion_temp := to_unsigned(40, adc_conversion_temp'length);
                         adc_bram_din <= std_logic_vector(adc_conversion_temp) ; 
                         adc_bram_wr_addr <= std_logic_vector(adc_mem_addr_count);
                        -- write a white pixel
@@ -128,7 +130,7 @@ begin
                     end if;
                 when RESET_DISP => 
                     if (finished_disp_draw = '0') then
-                        start_disp_draw <= '1';
+--                        start_disp_draw <= '1';
                     else
                         adc_state <= START_CONV;
                         adc_mem_addr_count <= (others =>'0'); -- reset counter 
@@ -169,7 +171,7 @@ begin
                         disp_state <= FINISHED;
                     end if;
                 when FINISHED =>
-                     if (refresh_state_count /= t_top_count) then
+                     if (refresh_state_count < t_top_count) then
                         refresh_state_count <= refresh_state_count + 1;
                     else
                         refresh_state_count <= (others => '0');

@@ -52,8 +52,8 @@ signal line_draw_state_next : FSM_states_line_draw := IDLE;
 
 begin
     -- arithmetic signals 
-    addr_y_sub_value <= addr_y_value + "1111111";
-    addr_y_add_value <= addr_y_value + "0000001";
+    addr_y_sub_value <= addr_y_value + "1111111"; -- addr_y_value - 1
+    addr_y_add_value <= addr_y_value + "0000001"; -- addr_y_value + 1
 
     process(clock)
     begin
@@ -164,7 +164,7 @@ begin
                     addr_y_value <= addr_y_sub_value;
                     line_draw_state <= UNSIGNED_DATA;
                 when FINISHED =>
-                    if (addr_x_count < ADC_ADDRESS_DEPTH-1) then
+                    if (addr_x_count < ADC_ADDRESS_DEPTH-2) then
                         addr_x_count <= addr_x_count + 1; -- increments in two
                         line_draw_state <= LOAD_X1;
                         time_x0 <= time_x1;
