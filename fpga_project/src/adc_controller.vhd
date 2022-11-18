@@ -41,7 +41,7 @@ constant t_new_conv : unsigned(16 downto 0)  := to_unsigned(40000, waiting_state
 -- time interval between refreshing the display and starting a new conversion 
 signal refresh_state_count : unsigned(31 downto 0) := (others =>'0');
 --constant t_top_count : unsigned(31 downto 0)  := to_unsigned(80000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
-constant t_top_count : unsigned(31 downto 0)  := to_unsigned(3900000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
+constant t_top_count : unsigned(31 downto 0)  := to_unsigned(1900000, refresh_state_count'length); -- 1/(200MHz/110) = 550ns delay, min = 500ns
 
 -- adc controller state
 type FSM_states is (START_CONV, POLL_CONV, FINISHED_CONV, RESET_DISP, WAITING);

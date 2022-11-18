@@ -43,7 +43,7 @@ signal addr_y_value_mult_1 : unsigned(14 downto 0) := (others =>'0');
 signal addr_y_value_mult_2 : unsigned(14 downto 0) := (others =>'0');
 
 -- maximum x axis value
-constant ADC_ADDRESS_DEPTH : unsigned(7 downto 0) := to_unsigned(200,addr_x_count'length)-1;
+constant ADC_ADDRESS_DEPTH : unsigned(7 downto 0) := to_unsigned(163,addr_x_count'length)-1;
 
 -- line draw controller state
 type FSM_states_line_draw is (IDLE, LOAD_X0, LOAD_Y0, LOAD_X1, LOAD_Y1, DETERMINE_DIRECTION, DRAW_STRAIGHT, DRAW_DOWN, DRAW_UP, UNSIGNED_DATA, MULT_DATA_0, MULT_DATA_1, MULT_DATA_2, ADD_DATA_0, ADD_DATA_1, ADD_DATA_2, ADD_DATA_3, WRITE_DATA, SET_Y_END, INCREMENT_Y, DECREMENT_Y, FINISHED);

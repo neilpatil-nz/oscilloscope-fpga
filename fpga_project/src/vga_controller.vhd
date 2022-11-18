@@ -54,16 +54,21 @@ constant HS_Pixel : integer := x_Width + x_FrontPorch + x_BackPorch;
 constant VS_Line  : integer := y_Height + y_FrontPorch + y_BackPorch;
 
 -- colour signals
-constant COLOUR_NUM_WIDTH : integer := 2;
+constant COLOUR_NUM_WIDTH : integer := 3;
 constant COLOUR_DATA_WIDTH : integer := 6;
 
 -- signal and grid colour control signals
-constant signal_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "01";
-constant grid_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "10";
+constant signal_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "001";
+constant grid_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "010";
+constant text_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "011";
+constant background_lcd : std_logic_vector(COLOUR_NUM_WIDTH - 1 downto 0) := "100";
 
 -- grid line enable signals 
 signal grid_line_y_en : std_logic := '0';
 signal grid_line_x_en : std_logic := '0';
+
+-- menu enable signals
+signal background_en : std_logic := '0';
 
 -- x and y pixel counters 
 signal x_Count : integer range 0 to HS_Pixel := 0;
@@ -135,7 +140,9 @@ begin
                       y_Count <= (VS_Line - y_FrontPorch-1)) else '0';
 
     -- memory addressing
+    -- x_pixel = (x_Count-x_BackPorch)/4
     x_Pixel <=  shift_right(to_unsigned(x_Count-x_BackPorch, x_Pixel'length), 2);
+    -- y_pixel = (y_Count/4)*200
     y_Pixel <=  to_unsigned((to_integer(unsigned(shift_right(to_unsigned(y_Count, y_Pixel'length), 2))) * x_Width_Buffer),  y_Pixel'length);
         
     grid_line_y_en <= '1' when y_Count >= 60 and y_Count < 62 else -- 5V
@@ -148,10 +155,10 @@ begin
                     '1' when y_Count >= 480 and y_Count < 482 else -- 0.625V
                     '0';                                           -- 0V
 
-    grid_line_x_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 200+x_BackPorch and x_Count < 202+x_BackPorch) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 400+x_BackPorch and x_Count < 402+x_BackPorch) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 600+x_BackPorch and x_Count < 602+x_BackPorch) else 
-                      '1' when (x_Count >= x_BackPorch and x_Count >= 800+x_BackPorch and x_Count < 802+x_BackPorch) else 
+    grid_line_x_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 163+x_BackPorch and x_Count < 165+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 326+x_BackPorch and x_Count < 328+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 489+x_BackPorch and x_Count < 491+x_BackPorch) else 
+                      '1' when (x_Count >= x_BackPorch and x_Count >= 650+x_BackPorch and x_Count < 652+x_BackPorch) else 
                       '0';
 
     -- bram signals (din)
@@ -239,12 +246,18 @@ begin
     -- lcd enable
     lcd_enable <= sig_lcd_enable;
 
-    output_lcd <= signal_lcd when (bram_qout(0) = '1') else 
-                  grid_lcd when grid_line_y_en = '1' or grid_line_x_en = '1' else "00";
+    background_en <= '1' when (x_Count >= x_BackPorch and x_Count >= 650+x_BackPorch) else '0';
 
-    lcd_r <= "00011" when output_lcd = grid_lcd else "00000";
-    lcd_g <= "100000" when output_lcd = signal_lcd else -- green colour signal
+    output_lcd <= signal_lcd when (bram_qout(0) = '1') else 
+                  background_lcd when background_en = '1' else
+                  grid_lcd when grid_line_y_en = '1' or grid_line_x_en = '1' else "000";
+
+    lcd_r <= "00011" when output_lcd = background_lcd else
+             "00011" when output_lcd = grid_lcd else "00000";
+    lcd_g <= "000100" when output_lcd = background_lcd else -- background 
+             "100000" when output_lcd = signal_lcd else -- green colour signal
              "000011" when output_lcd = grid_lcd else "000000"; -- grey colour grid line
-    lcd_b <= "00011" when output_lcd = grid_lcd else "00000";
+    lcd_b <= "00010" when output_lcd = background_lcd else
+             "00011" when output_lcd = grid_lcd else "00000";
     
 end architecture;
